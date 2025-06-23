@@ -156,7 +156,7 @@ export default function Home() {
       {/* Navigation Bar */}
       <nav
         className={`bg-white sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? "shadow-xs py-2" : " shadow-xs py-2"
+          scrolled ? "shadow-xs py-2" : "shadow-xs py-2"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
@@ -213,7 +213,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu - now absolutely positioned */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -221,7 +221,8 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden bg-white shadow-lg rounded-b-lg"
+              className="md:hidden absolute left-0 right-0 top-full bg-white shadow-lg z-50"
+              style={{ willChange: "transform, opacity" }}
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {[
