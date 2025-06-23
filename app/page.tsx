@@ -1,65 +1,152 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import hero from "../public/images/software-engineering.jpg";
 import team from "../public/images/team-meeting.jpg";
-import testimonialImage from "../public/images/software-engineering.jpg"; // Assuming you have a placeholder or actual image for testimonials
+import testimonial1 from "../public/images/software-engineering.jpg";
+import testimonial2 from "../public/images/software-engineering.jpg";
+import testimonial3 from "../public/images/software-engineering.jpg";
+import client1 from "../public/images/software-engineering.jpg";
+import client2 from "../public/images/software-engineering.jpg";
+import client3 from "../public/images/software-engineering.jpg";
+import client4 from "../public/images/software-engineering.jpg";
+import client5 from "../public/images/software-engineering.jpg";
 import {
-  HiOutlineEnvelope, // Heroicons v2
+  HiOutlineEnvelope,
   HiOutlineMapPin,
   HiOutlinePhone,
-  HiArrowRight, // Arrow icon
   HiOutlineAcademicCap,
   HiOutlineCurrencyDollar,
+  HiOutlineShieldCheck,
+  HiOutlineChartBar,
 } from "react-icons/hi2";
 import {
-  FaFacebookF, // Font Awesome
+  FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
   FaGithub,
-  FaYoutube,
   FaUserTie,
   FaUsers,
   FaCode,
   FaTrophy,
   FaRocket,
-  FaQuoteLeft, // For testimonials
+  FaQuoteLeft,
+  FaLightbulb,
 } from "react-icons/fa";
+import { FiMenu, FiX } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
+import { HiOutlineLightningBolt } from "react-icons/hi";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  const services = [
+    {
+      title: "CIO as a Service",
+      description:
+        "On-demand executive technology leadership to guide your strategic initiatives.",
+      icon: <FaUserTie className="w-8 h-8" />,
+      color: "bg-purple-600",
+    },
+    {
+      title: "Customer Experience Digitalisation",
+      description:
+        "Transform customer interactions with data-driven digital strategies.",
+      icon: <FaUsers className="w-8 h-8" />,
+      color: "bg-blue-600",
+    },
+    {
+      title: "Digital Transformation Advisory",
+      description:
+        "Comprehensive roadmaps to modernize operations for the digital age.",
+      icon: <FaRocket className="w-8 h-8" />,
+      color: "bg-green-600",
+    },
+    {
+      title: "Software Engineering as a Service",
+      description:
+        "Elite engineering talent delivered on-demand to build and scale your technology.",
+      icon: <FaCode className="w-8 h-8" />,
+      color: "bg-orange-600",
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        "Jaasify transformed our digital presence. Their expertise and dedication are unmatched. We saw 300% growth in engagement within months.",
+      name: "Jane Doe",
+      role: "CEO, Tech Solutions Inc.",
+      image: testimonial1,
+    },
+    {
+      quote:
+        "Their CIO as a Service was a game-changer. We got executive-level strategic guidance without the overhead of a full-time hire.",
+      name: "John Smith",
+      role: "Founder, Global Innovations",
+      image: testimonial2,
+    },
+    {
+      quote:
+        "The engineering team delivered our complex project on time and under budget, exceeding all expectations. Truly exceptional work.",
+      name: "Sarah Lee",
+      role: "CTO, Creative Solutions",
+      image: testimonial3,
+    },
+  ];
+
+  const clients = [client1, client2, client3, client4, client5];
+
   return (
-    <div className="min-h-screen bg-white text-gray-800">
+    <div className="min-h-screen bg-white text-gray-800 font-sans antialiased">
       {/* Top contact bar */}
-      <div className="bg-purple-900 text-white py-3 px-4 sm:px-6 lg:px-20">
+      <div className="bg-gradient-to-r from-purple-900 to-indigo-800 text-white py-3 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm space-y-2 sm:space-y-0">
           <div className="flex flex-wrap justify-center sm:justify-start items-center space-x-4 sm:space-x-6">
             <span className="flex items-center space-x-2">
               <HiOutlineEnvelope className="h-4 w-4 sm:h-5 sm:w-5 text-purple-300" />
-              <span>info@Jaasify.com</span>
+              <span>info@jaasify.com</span>
             </span>
             <span className="flex items-center space-x-2">
               <HiOutlineMapPin className="h-4 w-4 sm:h-5 sm:w-5 text-purple-300" />
-              <span>Nairobi Kenya</span>
+              <span>Nairobi, Kenya</span>
             </span>
             <span className="flex items-center space-x-2">
               <HiOutlinePhone className="h-4 w-4 sm:h-5 sm:w-5 text-purple-300" />
-              <span>+254 712345678</span>
+              <span>+254 712 345 678</span>
             </span>
           </div>
           <div className="flex space-x-4">
-            <a href="#" className="hover:text-purple-300 transition-colors">
+            <a
+              href="#"
+              className="hover:text-purple-300 transition-colors duration-200"
+            >
               <FaFacebookF className="h-4 w-4 sm:h-5 sm:w-5" />
             </a>
-            <a href="#" className="hover:text-purple-300 transition-colors">
+            <a
+              href="#"
+              className="hover:text-purple-300 transition-colors duration-200"
+            >
               <FaTwitter className="h-4 w-4 sm:h-5 sm:w-5" />
             </a>
-            <a href="#" className="hover:text-purple-300 transition-colors">
+            <a
+              href="#"
+              className="hover:text-purple-300 transition-colors duration-200"
+            >
               <FaLinkedinIn className="h-4 w-4 sm:h-5 sm:w-5" />
             </a>
           </div>
@@ -67,792 +154,766 @@ export default function Home() {
       </div>
 
       {/* Navigation Bar */}
-      <nav className="bg-white shadow-sm sticky top-0 z-[100]">
-        {" "}
-        {/* Increased z-index */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-3 sm:py-4">
-          <div className="flex justify-between items-center">
+      <nav
+        className={`bg-white sticky top-0 z-50 transition-all duration-300 ${
+          scrolled ? "shadow-xs py-2" : " shadow-xs py-2"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="flex justify-between items-center h-16">
+            {/* Logo */}
             <div className="flex items-center">
               <div className="flex items-center">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-purple-600 rounded mr-2 flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">J</span>
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg mr-2 flex items-center justify-center shadow-md">
+                  <span className="text-white font-bold text-lg">J</span>
                 </div>
-                <span className="text-lg sm:text-xl font-bold text-gray-800">
+                <span className="text-xl font-bold text-gray-800 bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
                   Jaasify
                 </span>
               </div>
             </div>
+
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex space-x-4 lg:space-x-8">
-              <a
-                href="#hero"
-                className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
-              >
-                Home
-              </a>
-              <a
-                href="#about"
-                className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
-              >
-                Company
-              </a>
-              <a
-                href="#services"
-                className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
-              >
-                Services
-              </a>
-              <a
-                href="#why-choose-us"
-                className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
-              >
-                Why Us
-              </a>
-              <a
-                href="#testimonials"
-                className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
-              >
-                Testimonials
-              </a>
-              <a
-                href="#contact"
-                className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
-              >
-                Contact
-              </a>
+            <div className="hidden md:flex space-x-1">
+              {[
+                { name: "Home", href: "#hero" },
+                { name: "About", href: "#about" },
+                { name: "Services", href: "#services" },
+                { name: "Why Us", href: "#why-choose-us" },
+                { name: "Testimonials", href: "#testimonials" },
+                { name: "Contact", href: "#contact" },
+              ].map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="px-4 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200 rounded-lg hover:bg-purple-50"
+                >
+                  {item.name}
+                </a>
+              ))}
             </div>
+
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center">
               <button
                 type="button"
-                className="text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 p-2 rounded-md relative z-[101]" // Ensure button is above menu for closing
+                className="text-gray-500 hover:text-gray-900 focus:outline-none p-2 rounded-md"
                 aria-controls="mobile-menu"
                 aria-expanded={isMobileMenuOpen ? "true" : "false"}
                 onClick={toggleMobileMenu}
               >
                 <span className="sr-only">Open main menu</span>
-                {/* Animated Hamburger Icon */}
-                <div className="block w-6 h-6 relative">
-                  <span
-                    aria-hidden="true"
-                    className={`block absolute h-0.5 w-6 bg-gray-600 transform transition duration-300 ease-in-out ${
-                      isMobileMenuOpen ? "rotate-45 top-2.5" : "top-0"
-                    }`}
-                  ></span>
-                  <span
-                    aria-hidden="true"
-                    className={`block absolute h-0.5 w-6 bg-gray-600 transform transition duration-300 ease-in-out ${
-                      isMobileMenuOpen ? "opacity-0" : "top-2.5"
-                    }`}
-                  ></span>
-                  <span
-                    aria-hidden="true"
-                    className={`block absolute h-0.5 w-6 bg-gray-600 transform transition duration-300 ease-in-out ${
-                      isMobileMenuOpen ? "-rotate-45 top-2.5" : "top-5"
-                    }`}
-                  ></span>
-                </div>
+                {isMobileMenuOpen ? (
+                  <FiX className="h-6 w-6" />
+                ) : (
+                  <FiMenu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
         </div>
-        {/* Mobile menu (toggled by state) */}
-        {/* Changed to fixed positioning to float over content */}
-        <div
-          className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          {/* Close button inside the menu for better accessibility, though the main button also works */}
-          <div className="flex justify-end px-4 py-3">
-            <button
-              type="button"
-              className="text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 p-2 rounded-md"
-              onClick={toggleMobileMenu}
+
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden bg-white shadow-lg rounded-b-lg"
             >
-              <span className="sr-only">Close menu</span>
-              <svg
-                className="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <a
-              href="#hero"
-              className="text-gray-700 hover:bg-gray-100 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium"
-              onClick={toggleMobileMenu} // Close menu on link click
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className="text-gray-700 hover:bg-gray-100 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium"
-              onClick={toggleMobileMenu} // Close menu on link click
-            >
-              Company
-            </a>
-            <a
-              href="#services"
-              className="text-gray-700 hover:bg-gray-100 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium"
-              onClick={toggleMobileMenu} // Close menu on link click
-            >
-              Services
-            </a>
-            <a
-              href="#why-choose-us"
-              className="text-gray-700 hover:bg-gray-100 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium"
-              onClick={toggleMobileMenu} // Close menu on link click
-            >
-              Why Us
-            </a>
-            <a
-              href="#testimonials"
-              className="text-gray-700 hover:bg-gray-100 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium"
-              onClick={toggleMobileMenu} // Close menu on link click
-            >
-              Testimonials
-            </a>
-            <a
-              href="#contact"
-              className="text-gray-700 hover:bg-gray-100 hover:text-purple-600 block px-3 py-2 rounded-md text-base font-medium"
-              onClick={toggleMobileMenu} // Close menu on link click
-            >
-              Contact
-            </a>
-          </div>
-        </div>
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {[
+                  { name: "Home", href: "#hero" },
+                  { name: "About", href: "#about" },
+                  { name: "Services", href: "#services" },
+                  { name: "Why Us", href: "#why-choose-us" },
+                  { name: "Testimonials", href: "#testimonials" },
+                  { name: "Contact", href: "#contact" },
+                ].map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50"
+                    onClick={toggleMobileMenu}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
+
       {/* Hero Section */}
       <header
         id="hero"
-        className="relative bg-[#f9fafa] overflow-hidden min-h-[80vh] flex items-center py-16 sm:py-20 lg:py-0"
+        className="relative bg-gradient-to-br from-gray-50 to-purple-50 overflow-hidden min-h-[80vh] md:min-h-[90vh] flex items-center py-12 lg:py-0"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 w-full">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 xl:gap-16">
-            {/* Left Content */}
-            <div className="lg:w-1/2 text-center lg:text-left">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
-                Powerful Digital Solutions for{" "}
-                <span className="text-purple-600">Your Business Growth</span>
-              </h1>
+        {/* Background Blobs (Enhanced) - Reduced on mobile */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-[5%] left-[5%] w-32 h-32 md:w-48 md:h-48 bg-purple-200 rounded-full opacity-15 blur-xl md:blur-3xl -z-10 animate-blob-slow"></div>
+            <div className="absolute bottom-[10%] right-[10%] w-40 h-40 md:w-64 md:h-64 bg-blue-100 rounded-full opacity-20 blur-xl md:blur-3xl -z-10 animate-blob"></div>
+            <div className="absolute top-[40%] left-[15%] w-24 h-24 md:w-32 md:h-32 bg-purple-100 rounded-full opacity-10 blur-lg md:blur-2xl -z-10 animate-pulse-slow"></div>
+            <div className="absolute top-[70%] left-[30%] w-40 h-40 md:w-56 md:h-56 bg-indigo-100 rounded-full opacity-15 blur-xl md:blur-3xl -z-10 animate-blob-delay"></div>
+          </div>
+        </div>
 
-              <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto lg:mx-0 mb-6">
-                We deliver cutting-edge software solutions that drive
-                innovation, efficiency, and measurable results for businesses of
-                all sizes.
-              </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-8 xl:gap-16">
+            {/* Right Image - Now first on mobile */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              className="lg:w-1/2 relative order-1 lg:order-2 mt-0 sm:mt-8 lg:mt-0 flex justify-center items-center w-full"
+            >
+              {/* Image Container with Mobile Optimizations */}
+              <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl transform transition-transform duration-500 ease-in-out hover:scale-[1.01] hover:shadow-lg md:hover:shadow-3xl group w-full max-w-[500px] md:max-w-[800px]">
+                <div className="absolute inset-0 rounded-2xl md:rounded-3xl p-1 bg-gradient-to-br from-purple-400/30 to-blue-300/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
-                <button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3.5 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-purple-200 hover:-translate-y-0.5">
-                  Get Started
-                </button>
-                <button className="border border-gray-300 hover:border-purple-400 text-gray-700 hover:text-purple-600 px-8 py-3.5 rounded-lg font-semibold transition-all duration-200">
-                  Learn More
-                </button>
-              </div>
-
-              <div className="pt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3].map((item) => (
-                      <div
-                        key={item}
-                        className="h-8 w-8 rounded-full bg-purple-100 border-2 border-white"
-                      ></div>
-                    ))}
-                  </div>
-                  <span>500+ Happy Clients</span>
-                </div>
-                <div className="hidden sm:block h-4 w-px bg-gray-300"></div>
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-purple-600"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <span>Trusted by Industry Leaders</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Image */}
-            <div className="lg:w-1/2 relative mt-12 lg:mt-0">
-              <div className="relative rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
                 <Image
                   src={hero}
                   alt="Team collaborating on digital solutions"
                   width={800}
                   height={600}
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto object-cover rounded-xl md:rounded-2xl"
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-purple-900/20 mix-blend-multiply"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-800/25 to-blue-700/35 mix-blend-multiply rounded-xl md:rounded-2xl"></div>
               </div>
-              {/* Floating stats card */}
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-xl shadow-xl p-4 w-[90%] sm:w-4/5 max-w-sm">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-purple-100 rounded-lg">
-                      <FaRocket className="h-5 w-5 text-purple-600" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500">Projects Launched</p>
-                      <p className="text-lg font-bold text-gray-800">1,200+</p>
-                    </div>
-                  </div>
-                  <div className="h-8 w-px bg-gray-200"></div>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-green-100 rounded-lg">
-                      <FaTrophy className="h-5 w-5 text-green-600" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-gray-500">Success Rate</p>
-                      <p className="text-lg font-bold text-gray-800">98%</p>
-                    </div>
-                  </div>
+
+              {/* Floating Card - Mobile Optimized */}
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
+                className="absolute -bottom-10 sm:-bottom-16 md:-bottom-20 lg:-bottom-24 left-1/2 -translate-x-1/2 bg-white rounded-xl md:rounded-2xl shadow-lg md:shadow-xl p-4 sm:p-5 md:p-6 w-[85%] sm:w-[calc(100%-2rem)] max-w-xs md:max-w-sm flex items-center justify-center gap-3 sm:gap-4 text-center hover:-translate-y-1 md:hover:-translate-y-2 hover:scale-[1.01] transition-all duration-300 ease-out z-20 hover:shadow-md md:hover:shadow-3xl border border-gray-100"
+              >
+                <div className="p-2 sm:p-3 bg-purple-50 rounded-lg flex-shrink-0">
+                  <FaLightbulb className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
                 </div>
+                <div className="flex-grow">
+                  <p className="text-lg sm:text-xl font-bold text-gray-800 mb-0.5 leading-tight">
+                    Solutions Built for Scale
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-500 leading-tight">
+                    Future-proofing your enterprise with cutting-edge tech.
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Left Content - Now second on mobile */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="lg:w-1/2 text-center lg:text-left order-2 lg:order-1 pt-8 lg:pt-0"
+            >
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 leading-snug md:leading-tight">
+                Transformative{" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-700">
+                  Digital Solutions
+                </span>{" "}
+                for Enterprise Growth
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mt-4 mb-6 md:mb-8 leading-relaxed">
+                We architect and deliver cutting-edge technology solutions that
+                drive innovation, efficiency, and measurable business outcomes.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 justify-center lg:justify-start">
+                <motion.button
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+                  }}
+                  whileTap={{ scale: 0.97 }}
+                  className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-lg md:rounded-xl font-medium sm:font-semibold transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 text-sm sm:text-base"
+                >
+                  Get Started
+                </motion.button>
+                <motion.button
+                  whileHover={{
+                    scale: 1.03,
+                    boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
+                  }}
+                  whileTap={{ scale: 0.97 }}
+                  className="border border-purple-300 hover:border-purple-500 text-purple-700 hover:text-purple-600 px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-lg md:rounded-xl font-medium sm:font-semibold transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50 text-sm sm:text-base"
+                >
+                  Learn More
+                </motion.button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-
-        {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-50 to-transparent opacity-30 -z-10 hidden lg:block"></div>
-
-        {/* Floating shapes */}
-        <div className="absolute top-1/4 left-5 w-16 h-16 rounded-full bg-purple-100 opacity-20 -z-10 hidden sm:block"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-24 h-24 rounded-full bg-purple-200 opacity-10 -z-10 hidden sm:block"></div>
       </header>
 
       {/* Services Section */}
-      <section id="services" className="py-20 sm:py-24 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="mb-4 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
-              Enterprise Technology Services
+      <section id="services" className="relative py-8 bg-white overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow"></div>
+          <div className="absolute bottom-10 right-10 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center mb-8"
+          >
+            <h2 className="text-2xl md:text-4xl font-bold text-gray-900  leading-tight">
+              Strategic{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
+                Digital Services
+              </span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600">
-              Bespoke consulting solutions tailored to your strategic objectives
+            <p className="text-xl text-gray-600">
+              We architect technology solutions that drive measurable business
+              outcomes
             </p>
-            <div className="border-t-2 border-purple-600 w-16 mx-auto my-6"></div>
-          </div>
+          </motion.div>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {/* CIO as a Service */}
-            <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-6 w-16 h-16 mx-auto rounded-full bg-purple-600 text-white">
-                <FaUserTie className="w-8 h-8" />
-              </div>
-              <h3 className="mb-4 text-xl sm:text-2xl font-semibold text-center text-gray-900">
-                CIO as a Service
-              </h3>
-              <p className="text-gray-600 text-center text-sm sm:text-base">
-                On-demand executive technology leadership to guide your
-                strategic initiatives without the full-time commitment.
-              </p>
-              <div className="mt-6 text-center">
-                <a
-                  href="#"
-                  className="inline-flex items-center text-purple-600 font-medium hover:text-purple-700 transition-colors"
-                >
-                  Learn more <HiArrowRight className="ml-1 h-5 w-5" />
-                </a>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ y: -10 }}
+                className="relative group h-full"
+              >
+                {/* Card container */}
+                <div className="relative h-full rounded-xl overflow-hidden  transition-all duration-300 border border-gray-100">
+                  {/* Gradient overlay */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${service.color}/10 to-white/70 z-10`}
+                  ></div>
 
-            {/* Customer Experience Digitalisation */}
-            <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-6 w-16 h-16 mx-auto rounded-full bg-blue-600 text-white">
-                <FaUsers className="w-8 h-8" />
-              </div>
-              <h3 className="mb-4 text-xl sm:text-2xl font-semibold text-center text-gray-900">
-                Customer Experience Digitalisation
-              </h3>
-              <p className="text-gray-600 text-center text-sm sm:text-base">
-                Transform customer interactions with data-driven digital
-                strategies that drive engagement and loyalty.
-              </p>
-              <div className="mt-6 text-center">
-                <a
-                  href="#"
-                  className="inline-flex items-center text-purple-600 font-medium hover:text-purple-700 transition-colors"
-                >
-                  Learn more <HiArrowRight className="ml-1 h-5 w-5" />
-                </a>
-              </div>
-            </div>
+                  {/* Icon floating in background */}
+                  <div
+                    className={`absolute -right-4 -top-4 w-24 h-24 ${service.color}/5 rounded-full transition-all duration-500 group-hover:scale-110`}
+                  >
+                    <div
+                      className={`absolute inset-0 flex items-center justify-center ${service.color}/20 rounded-full backdrop-blur-sm`}
+                    >
+                      {service.icon}
+                    </div>
+                  </div>
 
-            {/* Digital Transformation Advisory */}
-            <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-6 w-16 h-16 mx-auto rounded-full bg-green-600 text-white">
-                <FaRocket className="w-8 h-8" />
-              </div>
-              <h3 className="mb-4 text-xl sm:text-2xl font-semibold text-center text-gray-900">
-                Digital Transformation Advisory
-              </h3>
-              <p className="text-gray-600 text-center text-sm sm:text-base">
-                Comprehensive roadmaps to modernize operations, culture, and
-                technology for the digital age.
-              </p>
-              <div className="mt-6 text-center">
-                <a
-                  href="#"
-                  className="inline-flex items-center text-purple-600 font-medium hover:text-purple-700 transition-colors"
-                >
-                  Learn more <HiArrowRight className="ml-1 h-5 w-5" />
-                </a>
-              </div>
-            </div>
-
-            {/* Software Engineering as a Service */}
-            <div className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-6 w-16 h-16 mx-auto rounded-full bg-orange-600 text-white">
-                <FaCode className="w-8 h-8" />
-              </div>
-              <h3 className="mb-4 text-xl sm:text-2xl font-semibold text-center text-gray-900">
-                Software Engineering as a Service
-              </h3>
-              <p className="text-gray-600 text-center text-sm sm:text-base">
-                Elite engineering talent delivered on-demand to build, scale,
-                and optimize your technology assets.
-              </p>
-              <div className="mt-6 text-center">
-                <a
-                  href="#"
-                  className="inline-flex items-center text-purple-600 font-medium hover:text-purple-700 transition-colors"
-                >
-                  Learn more <HiArrowRight className="ml-1 h-5 w-5" />
-                </a>
-              </div>
-            </div>
+                  {/* Content */}
+                  <div className="relative z-20 h-full flex flex-col p-8">
+                    <div className="flex-grow">
+                      <div
+                        className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center text-white shadow-lg mb-6`}
+                      >
+                        {service.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600">{service.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
-
       {/* About Section */}
-      <section id="about" className="py-20 sm:py-24 lg:py-32 bg-gray-50">
+      <section id="about" className="py-20 sm:py-24 lg:py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="relative rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.005] transition-transform duration-300 ease-in-out">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.005] transition-transform duration-300 ease-in-out"
+            >
               <Image
                 src={team}
                 alt="Team collaborating on digital solutions"
                 width={800}
                 height={600}
                 className="w-full h-auto object-cover"
-                priority
               />
               <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-purple-900/20 mix-blend-multiply"></div>
-            </div>
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6">
-                Our Strategic Approach
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                Strategic Technology Partners for Digital Transformation
               </h2>
-              <p className="mt-6 text-base sm:text-lg leading-8 text-gray-600 mb-8">
-                At Jasify, we combine deep industry expertise with cutting-edge
-                technology knowledge to deliver transformative results.
+              <p className="text-lg text-gray-600 mb-8">
+                At Jaasify, we combine deep industry expertise with cutting-edge
+                technology knowledge to deliver transformative results that
+                drive business growth and innovation.
               </p>
-              <div className="mt-10 space-y-8">
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600 text-white shadow-md">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                      </svg>
+
+              <div className="space-y-6">
+                {[
+                  {
+                    icon: <HiOutlineLightningBolt className="w-6 h-6" />,
+                    title: "Business-First Mindset",
+                    description:
+                      "Align technology strategy with core business objectives to drive measurable outcomes.",
+                  },
+                  {
+                    icon: <HiOutlineShieldCheck className="w-6 h-6" />,
+                    title: "Proven Methodologies",
+                    description:
+                      "Frameworks refined through hundreds of successful enterprise engagements.",
+                  },
+                  {
+                    icon: <HiOutlineChartBar className="w-6 h-6" />,
+                    title: "Security & Compliance",
+                    description:
+                      "Enterprise-grade security practices embedded in every solution we recommend.",
+                  },
+                ].map((item, index) => (
+                  <div key={index} className="flex">
+                    <div className="flex-shrink-0">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600 text-white shadow-md">
+                        {item.icon}
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h3 className="text-lg font-medium text-gray-900">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 text-gray-600">{item.description}</p>
                     </div>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">
-                      Business-First Mindset
-                    </h3>
-                    <p className="mt-2 text-gray-600 text-sm sm:text-base">
-                      We align technology strategy with your core business
-                      objectives to drive measurable outcomes.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600 text-white shadow-md">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">
-                      Proven Methodologies
-                    </h3>
-                    <p className="mt-2 text-gray-600 text-sm sm:text-base">
-                      Our frameworks have been refined through hundreds of
-                      successful enterprise engagements.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex">
-                  <div className="flex-shrink-0">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600 text-white shadow-md">
-                      <svg
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">
-                      Security & Compliance
-                    </h3>
-                    <p className="mt-2 text-gray-600 text-sm sm:text-base">
-                      Enterprise-grade security practices are embedded in every
-                      solution we recommend.
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us Section - NEW */}
-      <section id="why-choose-us" className="py-20 sm:py-24 lg:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="mb-4 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
-              Why Partner with Jaasify?
+      {/* Why Choose Us Section */}
+      <section id="why-choose-us" className="py-10 sm:py-24 lg:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="max-w-3xl mx-auto text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              The Jaasify Advantage
             </h2>
-            <p className="text-base sm:text-lg text-gray-600">
+            <p className="text-lg text-gray-600">
               We stand out through our commitment to excellence, innovation, and
-              client success.
+              client success
             </p>
-            <div className="border-t-2 border-purple-600 w-16 mx-auto my-6"></div>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {/* Expertise */}
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-4 w-16 h-16 rounded-full bg-purple-100 text-purple-600">
-                <HiOutlineAcademicCap className="w-8 h-8" />
-              </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
-                Unrivaled Expertise
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Our team comprises seasoned professionals with deep knowledge
-                across various technology domains.
-              </p>
-            </div>
-            {/* Tailored Solutions */}
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-4 w-16 h-16 rounded-full bg-purple-100 text-purple-600">
-                <FaCode className="w-8 h-8" />
-              </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
-                Tailored Solutions
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                We design and implement solutions that precisely fit your unique
-                business challenges and goals.
-              </p>
-            </div>
-            {/* Measurable Results */}
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-4 w-16 h-16 rounded-full bg-purple-100 text-purple-600">
-                <FaTrophy className="w-8 h-8" />
-              </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
-                Measurable Results
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Our focus is on delivering tangible outcomes that contribute
-                directly to your bottom line and growth.
-              </p>
-            </div>
-            {/* Innovation-Driven */}
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-4 w-16 h-16 rounded-full bg-purple-100 text-purple-600">
-                <FaRocket className="w-8 h-8" />
-              </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
-                Innovation-Driven
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                We stay ahead of technological trends to bring you the latest
-                and most effective solutions.
-              </p>
-            </div>
-            {/* Client-Centric */}
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-4 w-16 h-16 rounded-full bg-purple-100 text-purple-600">
-                <FaUsers className="w-8 h-8" />
-              </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
-                Client-Centric Approach
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                Your success is our priority. We work collaboratively to ensure
-                your vision is realized.
-              </p>
-            </div>
-            {/* Cost-Effective */}
-            <div className="flex flex-col items-center text-center p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300">
-              <div className="flex justify-center items-center mb-4 w-16 h-16 rounded-full bg-purple-100 text-purple-600">
-                <HiOutlineCurrencyDollar className="w-8 h-8" />
-              </div>
-              <h3 className="mb-2 text-xl font-semibold text-gray-900">
-                Cost-Effective Solutions
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base">
-                We offer high-value services that optimize your investment and
-                deliver sustainable returns.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <HiOutlineAcademicCap className="w-8 h-8" />,
+                title: "Unrivaled Expertise",
+                description:
+                  "Seasoned professionals with deep knowledge across technology domains.",
+              },
+              {
+                icon: <FaCode className="w-8 h-8" />,
+                title: "Tailored Solutions",
+                description:
+                  "Solutions designed to fit your unique business challenges and goals.",
+              },
+              {
+                icon: <FaTrophy className="w-8 h-8" />,
+                title: "Measurable Results",
+                description:
+                  "Focus on delivering outcomes that contribute to your bottom line.",
+              },
+              {
+                icon: <FaRocket className="w-8 h-8" />,
+                title: "Innovation-Driven",
+                description:
+                  "Latest and most effective solutions from technological trends.",
+              },
+              {
+                icon: <FaUsers className="w-8 h-8" />,
+                title: "Client-Centric",
+                description:
+                  "Your success is our priority. We work to realize your vision.",
+              },
+              {
+                icon: <HiOutlineCurrencyDollar className="w-8 h-8" />,
+                title: "Cost-Effective",
+                description:
+                  "High-value services that optimize your investment and ROI.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -5 }}
+                className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div className="flex justify-center items-center mb-4 w-16 h-16 rounded-full bg-purple-100 text-purple-600 mx-auto">
+                  {item.icon}
+                </div>
+                <h3 className="mb-3 text-xl font-semibold text-center text-gray-900">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-center">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section - NEW */}
-      <section id="testimonials" className="py-20 sm:py-24 lg:py-32 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="mb-4 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
-              What Our Clients Say
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-20 sm:py-24 lg:py-10 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <span className="inline-block px-3 py-1 text-sm font-semibold text-purple-600 bg-purple-100 rounded-full mb-4">
+              Testimonials
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Trusted by Industry Leaders
             </h2>
-            <p className="text-base sm:text-lg text-gray-600">
+            <p className="text-lg text-gray-600">
               Hear directly from businesses that have experienced the Jaasify
-              difference.
+              difference
             </p>
-            <div className="border-t-2 border-purple-600 w-16 mx-auto my-6"></div>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Testimonial Card 1 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center">
-              <FaQuoteLeft className="text-purple-400 text-4xl mb-4" />
-              <p className="text-gray-700 italic mb-6 text-sm sm:text-base">
-                &quot;Jaasify transformed our digital presence. Their expertise
-                and dedication are truly unmatched. We saw significant growth in
-                customer engagement within months.&quot;
-              </p>
-              <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-purple-300">
-                <Image
-                  src={testimonialImage} // Use your actual image here
-                  alt="Client Testimonial"
-                  width={80}
-                  height={80}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <p className="font-semibold text-gray-900">Jane Doe</p>
-              <p className="text-sm text-gray-500">CEO, Tech Solutions Inc.</p>
-            </div>
-
-            {/* Testimonial Card 2 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center">
-              <FaQuoteLeft className="text-purple-400 text-4xl mb-4" />
-              <p className="text-gray-700 italic mb-6 text-sm sm:text-base">
-                &quot;Their CIO as a Service was a game-changer for us. We got
-                executive-level strategic guidance without the overhead of a
-                full-time hire. Highly recommended!&quot;
-              </p>
-              <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-purple-300">
-                <Image
-                  src={testimonialImage} // Use your actual image here
-                  alt="Client Testimonial"
-                  width={80}
-                  height={80}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <p className="font-semibold text-gray-900">John Smith</p>
-              <p className="text-sm text-gray-500">
-                Founder, Global Innovations
-              </p>
-            </div>
-
-            {/* Testimonial Card 3 */}
-            <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center">
-              <FaQuoteLeft className="text-purple-400 text-4xl mb-4" />
-              <p className="text-gray-700 italic mb-6 text-sm sm:text-base">
-                &quot;The software engineering team at Jaasify is top-notch.
-                They delivered our complex project on time and within budget,
-                exceeding all expectations.&quot;
-              </p>
-              <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-purple-300">
-                <Image
-                  src={testimonialImage} // Use your actual image here
-                  alt="Client Testimonial"
-                  width={80}
-                  height={80}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <p className="font-semibold text-gray-900">Sarah Lee</p>
-              <p className="text-sm text-gray-500">CTO, Creative Solutions</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -5 }}
+                className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col items-center text-center"
+              >
+                <FaQuoteLeft className="text-purple-400 text-4xl mb-6 opacity-70" />
+                <p className="text-gray-700 mb-8 relative">
+                  {testimonial.quote}
+                </p>
+                <div className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2 border-purple-200 shadow-sm">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={80}
+                    height={80}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <p className="font-semibold text-gray-900">
+                  {testimonial.name}
+                </p>
+                <p className="text-sm text-gray-500">{testimonial.role}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Client Logos Section */}
-      <section id="clients" className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-          <h2 className="text-center text-xl sm:text-2xl font-semibold leading-8 text-gray-900 mb-10">
-            Trusted by industry leaders
+          <h2 className="text-center text-xl sm:text-2xl font-semibold text-gray-900 mb-12">
+            Trusted by innovative companies worldwide
           </h2>
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 place-items-center">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="col-span-1 flex justify-center items-center h-20 sm:h-24 w-full bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 place-items-center">
+            {clients.map((client, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                className="col-span-1 flex justify-center items-center h-20 sm:h-24 w-full"
               >
-                <span className="text-gray-400 font-medium text-lg sm:text-xl">
-                  Client {i}
-                </span>
-              </div>
+                <Image
+                  src={client}
+                  alt={`Client ${index + 1}`}
+                  width={160}
+                  height={80}
+                  className="object-contain h-full w-full grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="bg-purple-600 py-16 sm:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-          <div className="relative isolate overflow-hidden bg-gradient-to-br from-purple-700 to-purple-800 px-6 py-16 sm:rounded-3xl sm:px-16 md:py-24 lg:flex lg:gap-x-20 lg:px-24 lg:py-32 shadow-2xl">
-            <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-0 lg:text-left">
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-6">
-                Ready to transform your technology strategy?
-              </h2>
-              <p className="mt-6 text-lg leading-8 text-purple-100 mb-10">
-                Schedule a confidential consultation with our executive advisors
-                today.
-              </p>
-              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4 lg:justify-start">
-                <a
-                  href="#"
-                  className="rounded-md bg-white px-6 py-3 text-lg font-semibold text-purple-600 shadow-sm hover:bg-gray-100 transition-all duration-200 w-full sm:w-auto text-center"
+      <section
+        id="contact"
+        className="relative overflow-hidden  sm:py-24 lg:py-10"
+      >
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600 rounded-full filter blur-3xl opacity-20 animate-float-slow"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600 rounded-full filter blur-3xl opacity-20 animate-float"></div>
+          <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-pink-500 rounded-full filter blur-3xl opacity-15 animate-float-delay"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative z-10"
+          >
+            {/* Glowing card container */}
+            <div className="relative rounded-3xl overflow-hidden px-8 py-16 sm:p-16 shadow-2xl bg-gradient-to-br from-purple-900 to-indigo-800 border border-purple-500/30">
+              {/* Particle animation background */}
+              <div className="absolute inset-0 opacity-10">
+                {[...Array(20)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-white rounded-full"
+                    style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animation: `pulse ${
+                        2 + Math.random() * 3
+                      }s infinite alternate`,
+                    }}
+                  ></div>
+                ))}
+              </div>
+
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              <div className="relative z-20 max-w-3xl mx-auto text-center">
+                <motion.h2
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
                 >
-                  Contact Us
-                </a>
-                <a
-                  href="#"
-                  className="text-lg font-semibold leading-6 text-white flex items-center group w-full sm:w-auto justify-center sm:justify-start"
+                  Ready to{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
+                    transform
+                  </span>{" "}
+                  your business?
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-lg text-purple-100 mb-10 max-w-2xl mx-auto"
                 >
-                  Learn more{" "}
-                  <HiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </a>
+                  Schedule a confidential consultation with our experts and
+                  discover how we can accelerate your digital transformation.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex flex-col sm:flex-row justify-center gap-4"
+                >
+                  <motion.a
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 10px 25px -5px rgba(255, 255, 255, 0.3)",
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    href="#"
+                    className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group"
+                  >
+                    <span className="relative z-10">Get Started</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </motion.a>
+
+                  <motion.a
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 10px 25px -5px rgba(216, 180, 254, 0.4)",
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    href="#"
+                    className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-all group"
+                  >
+                    <span className="relative z-10">Contact Us</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </motion.a>
+                </motion.div>
               </div>
             </div>
-            {/* Subtle background graphic */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
-              <svg
-                className="absolute inset-0 h-full w-full stroke-white [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-                aria-hidden="true"
-              >
-                <defs>
-                  <pattern
-                    id="983e3e4c-de62-4d96-bc52-c65de3abc464"
-                    width={200}
-                    height={200}
-                    x="50%"
-                    y={-1}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path d="M.5 200V.5H200" fill="none" />
-                  </pattern>
-                </defs>
-                <svg x="50%" y={-1} className="overflow-visible">
-                  <path
-                    d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M800 600h201v201h-201Z"
-                    strokeWidth={0.5}
-                  />
-                </svg>
-                <rect
-                  width="100%"
-                  height="100%"
-                  strokeWidth={0}
-                  fill="url(#983e3e4c-de62-4d96-bc52-c65de3abc464)"
-                />
-              </svg>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-10 sm:py-12">
-          <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
-            <p className="mt-8 text-sm leading-5 text-gray-500 md:order-1 md:mt-0">
-              &copy; {new Date().getFullYear()} JaaSify. All rights reserved.
+      <footer className="bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+              <div className="flex items-center mb-6">
+                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg mr-2 flex items-center justify-center shadow-md">
+                  <span className="text-white font-bold text-lg">J</span>
+                </div>
+                <span className="text-xl font-bold bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
+                  Jaasify
+                </span>
+              </div>
+              <p className="text-gray-400 mb-6">
+                Transforming businesses through innovative technology solutions
+                and strategic digital consulting.
+              </p>
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <FaFacebookF className="h-5 w-5" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <FaTwitter className="h-5 w-5" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <FaLinkedinIn className="h-5 w-5" />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <FaGithub className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-6">Services</h3>
+              <ul className="space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    CIO as a Service
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Digital Transformation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Software Engineering
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Customer Experience
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Technology Advisory
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-6">Company</h3>
+              <ul className="space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Our Team
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Case Studies
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    Blog
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-6">Contact</h3>
+              <address className="not-italic text-gray-400 space-y-3">
+                <p>Nairobi, Kenya</p>
+                <p>info@jaasify.com</p>
+                <p>+254 712 345 678</p>
+              </address>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm">
+              &copy; {new Date().getFullYear()} Jaasify Technologies. All rights
+              reserved.
             </p>
-            <div className="flex space-x-6 justify-center md:justify-end md:order-2 mt-6 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <FaGithub className="h-6 w-6" />
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <a href="#" className="text-gray-400 hover:text-white text-sm">
+                Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <FaLinkedinIn className="h-6 w-6" />
+              <a href="#" className="text-gray-400 hover:text-white text-sm">
+                Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <FaTwitter className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <FaFacebookF className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
-                <FaYoutube className="h-6 w-6" />
+              <a href="#" className="text-gray-400 hover:text-white text-sm">
+                Cookies
               </a>
             </div>
           </div>
