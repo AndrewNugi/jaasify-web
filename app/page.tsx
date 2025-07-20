@@ -7,26 +7,20 @@ import team from "../public/images/team-meeting.jpg";
 import testimonial1 from "../public/images/software-engineering.jpg";
 import testimonial2 from "../public/images/software-engineering.jpg";
 import testimonial3 from "../public/images/software-engineering.jpg";
-import client1 from "../public/images/software-engineering.jpg";
-import client2 from "../public/images/software-engineering.jpg";
-import client3 from "../public/images/software-engineering.jpg";
-import client4 from "../public/images/software-engineering.jpg";
-import client5 from "../public/images/software-engineering.jpg";
+
+import logo from "../public/images/Jaasify.png";
 import {
   HiOutlineEnvelope,
   HiOutlineMapPin,
   HiOutlinePhone,
   HiOutlineAcademicCap,
   HiOutlineCurrencyDollar,
-  HiOutlineShieldCheck,
-  HiOutlineChartBar,
 } from "react-icons/hi2";
 import {
   FaFacebookF,
   FaTwitter,
   FaLinkedinIn,
   FaGithub,
-  FaUserTie,
   FaUsers,
   FaCode,
   FaTrophy,
@@ -36,7 +30,8 @@ import {
 } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiOutlineLightningBolt } from "react-icons/hi";
+import { User, Briefcase, Users, Target } from "lucide-react";
+import { Zap, Shield, BarChart3 } from "lucide-react";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -59,29 +54,29 @@ export default function Home() {
       title: "CIO as a Service",
       description:
         "On-demand executive technology leadership to guide your strategic initiatives.",
-      icon: <FaUserTie className="w-8 h-8" />,
-      color: "bg-purple-600",
+      icon: <User size={24} />,
+      color: "bg-blue-500",
     },
     {
       title: "Customer Experience Digitalisation",
       description:
         "Transform customer interactions with data-driven digital strategies.",
-      icon: <FaUsers className="w-8 h-8" />,
-      color: "bg-blue-600",
-    },
-    {
-      title: "Digital Transformation Advisory",
-      description:
-        "Comprehensive roadmaps to modernize operations for the digital age.",
-      icon: <FaRocket className="w-8 h-8" />,
-      color: "bg-green-600",
+      icon: <Briefcase size={24} />,
+      color: "bg-orange-500",
     },
     {
       title: "Software Engineering as a Service",
       description:
         "Elite engineering talent delivered on-demand to build and scale your technology.",
-      icon: <FaCode className="w-8 h-8" />,
-      color: "bg-orange-600",
+      icon: <Users size={24} />,
+      color: "bg-teal-500",
+    },
+    {
+      title: "Digital Transformation Advisory",
+      description:
+        "Comprehensive roadmaps to modernize operations for the digital age.",
+      icon: <Target size={24} />,
+      color: "bg-purple-500",
     },
   ];
 
@@ -109,24 +104,43 @@ export default function Home() {
     },
   ];
 
-  const clients = [client1, client2, client3, client4, client5];
+  const features = [
+    {
+      icon: <Zap className="w-5 h-5" />,
+      title: "Business-First Mindset",
+      description:
+        "Align technology strategy with core business objectives to drive measurable outcomes.",
+    },
+    {
+      icon: <Shield className="w-5 h-5" />,
+      title: "Business-First Mindset",
+      description:
+        "Align technology strategy with core business objectives to drive measurable outcomes.",
+    },
+    {
+      icon: <BarChart3 className="w-5 h-5" />,
+      title: "Business-First Mindset",
+      description:
+        "Align technology strategy with core business objectives to drive measurable outcomes.",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans antialiased">
       {/* Top contact bar */}
-      <div className="bg-gradient-to-r from-purple-900 to-indigo-800 text-white py-3 px-4 sm:px-6 lg:px-20">
+      <div className="bg-[#33c0e3] text-white py-3 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm space-y-2 sm:space-y-0">
           <div className="flex flex-wrap justify-center sm:justify-start items-center space-x-4 sm:space-x-6">
             <span className="flex items-center space-x-2">
-              <HiOutlineEnvelope className="h-4 w-4 sm:h-5 sm:w-5 text-purple-300" />
+              <HiOutlineEnvelope className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
               <span>info@jaasify.com</span>
             </span>
             <span className="flex items-center space-x-2">
-              <HiOutlineMapPin className="h-4 w-4 sm:h-5 sm:w-5 text-purple-300" />
+              <HiOutlineMapPin className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
               <span>Nairobi, Kenya</span>
             </span>
             <span className="flex items-center space-x-2">
-              <HiOutlinePhone className="h-4 w-4 sm:h-5 sm:w-5 text-purple-300" />
+              <HiOutlinePhone className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
               <span>+254 712 345 678</span>
             </span>
           </div>
@@ -161,16 +175,9 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <div className="flex items-center">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg mr-2 flex items-center justify-center shadow-md">
-                  <span className="text-white font-bold text-lg">J</span>
-                </div>
-                <span className="text-xl font-bold text-gray-800 bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
-                  Jaasify
-                </span>
-              </div>
+            {/* Logo - Improved alignment */}
+            <div className="flex items-center flex-shrink-0">
+              <Image src={logo} alt="Jaasify Logo" className="h-10 w-auto" />
             </div>
 
             {/* Desktop Navigation Links */}
@@ -186,7 +193,7 @@ export default function Home() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="px-4 py-2 text-gray-700 hover:text-purple-600 font-medium transition-colors duration-200 rounded-lg hover:bg-purple-50"
+                  className="px-4 py-2 text-gray-700 hover:text-[#33c0e3] font-medium transition-colors duration-200"
                 >
                   {item.name}
                 </a>
@@ -295,8 +302,8 @@ export default function Home() {
                 transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
                 className="absolute -bottom-10 sm:-bottom-16 md:-bottom-20 lg:-bottom-24 left-1/2 -translate-x-1/2 bg-white rounded-xl md:rounded-2xl shadow-lg md:shadow-xl p-4 sm:p-5 md:p-6 w-[85%] sm:w-[calc(100%-2rem)] max-w-xs md:max-w-sm flex items-center justify-center gap-3 sm:gap-4 text-center hover:-translate-y-1 md:hover:-translate-y-2 hover:scale-[1.01] transition-all duration-300 ease-out z-20 hover:shadow-md md:hover:shadow-3xl border border-gray-100"
               >
-                <div className="p-2 sm:p-3 bg-purple-50 rounded-lg flex-shrink-0">
-                  <FaLightbulb className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
+                <div className="p-2 sm:p-3 bg-gray-100 rounded-full flex-shrink-0">
+                  <FaLightbulb className="h-5 w-5 sm:h-6 sm:w-6 text-[#33c0e3]" />
                 </div>
                 <div className="flex-grow">
                   <p className="text-lg sm:text-xl font-bold text-gray-800 mb-0.5 leading-tight">
@@ -318,7 +325,7 @@ export default function Home() {
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 leading-snug md:leading-tight">
                 Transformative{" "}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-700">
+                <span className="bg-clip-text text-[#33c0e3] bg-gradient-to-r from-purple-600 to-indigo-700">
                   Digital Solutions
                 </span>{" "}
                 for Enterprise Growth
@@ -334,7 +341,7 @@ export default function Home() {
                     boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
                   }}
                   whileTap={{ scale: 0.97 }}
-                  className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-lg md:rounded-xl font-medium sm:font-semibold transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 text-sm sm:text-base"
+                  className="bg-[#1C3461] hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 text-sm sm:text-base"
                 >
                   Get Started
                 </motion.button>
@@ -344,7 +351,7 @@ export default function Home() {
                     boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
                   }}
                   whileTap={{ scale: 0.97 }}
-                  className="border border-purple-300 hover:border-purple-500 text-purple-700 hover:text-purple-600 px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-lg md:rounded-xl font-medium sm:font-semibold transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50 text-sm sm:text-base"
+                  className="border border-[#33c0e3] hover:border-[#33c0e3] text-[#33c0e3] hover:text-[#33c0e3] px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50 text-sm sm:text-base"
                 >
                   Learn More
                 </motion.button>
@@ -355,11 +362,17 @@ export default function Home() {
       </header>
 
       {/* Services Section */}
-      <section id="services" className="relative py-8 bg-white overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl animate-float-slow"></div>
-          <div className="absolute bottom-10 right-10 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl animate-float"></div>
+      <section className="relative py-28 bg-[#1C3461] overflow-hidden">
+        {/* Decorative corner circles */}
+        <div className="absolute top-4 left-4 w-3 h-3 bg-white rounded-full opacity-60"></div>
+        <div className="absolute top-4 right-4 w-3 h-3 bg-white rounded-full opacity-60"></div>
+        <div className="absolute bottom-4 left-4 w-3 h-3 bg-white rounded-full opacity-60"></div>
+        <div className="absolute bottom-4 right-4 w-3 h-3 bg-white rounded-full opacity-60"></div>
+
+        {/* Subtle background decorations */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-cyan-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-64 h-64 bg-blue-400 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -368,62 +381,44 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center mb-8"
+            className="text-center mb-12"
           >
-            <h2 className="text-2xl md:text-4xl font-bold text-gray-900  leading-tight">
-              Strategic{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
-                Digital Services
-              </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-cyan-400 mb-4">
+              Strategic Digital Services
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto">
               We architect technology solutions that drive measurable business
               outcomes
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                whileHover={{ y: -10 }}
-                className="relative group h-full"
+                viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="group"
               >
-                {/* Card container */}
-                <div className="relative h-full rounded-xl overflow-hidden  transition-all duration-300 border border-gray-100">
-                  {/* Gradient overlay */}
+                <div className="bg-white rounded-lg p-12 h-full shadow-lg hover:shadow-xl transition-all duration-300">
+                  {/* Icon */}
                   <div
-                    className={`absolute inset-0 bg-gradient-to-br ${service.color}/10 to-white/70 z-10`}
-                  ></div>
-
-                  {/* Icon floating in background */}
-                  <div
-                    className={`absolute -right-4 -top-4 w-24 h-24 ${service.color}/5 rounded-full transition-all duration-500 group-hover:scale-110`}
+                    className={`w-12 h-12 ${service.color} rounded-lg flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <div
-                      className={`absolute inset-0 flex items-center justify-center ${service.color}/20 rounded-full backdrop-blur-sm`}
-                    >
-                      {service.icon}
-                    </div>
+                    {service.icon}
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-20 h-full flex flex-col p-8">
-                    <div className="flex-grow">
-                      <div
-                        className={`w-14 h-14 ${service.color} rounded-xl flex items-center justify-center text-white shadow-lg mb-6`}
-                      >
-                        {service.icon}
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-3">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600">{service.description}</p>
-                    </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -432,75 +427,76 @@ export default function Home() {
         </div>
       </section>
       {/* About Section */}
-      <section id="about" className="py-20 sm:py-24 lg:py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
+      <section id="about" className="py-16 lg:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Image Section */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative rounded-xl overflow-hidden shadow-xl transform hover:scale-[1.005] transition-transform duration-300 ease-in-out"
+              className="relative"
             >
-              <Image
-                src={team}
-                alt="Team collaborating on digital solutions"
-                width={800}
-                height={600}
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-purple-900/20 mix-blend-multiply"></div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.005] transition-transform duration-300 ease-in-out">
+                <Image
+                  src={team}
+                  alt="Team collaborating on digital solutions"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-purple-900/20 mix-blend-multiply"></div>
+              </div>
             </motion.div>
 
+            {/* Content Section */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="space-y-8"
             >
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Strategic Technology Partners for Digital Transformation
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                At Jaasify, we combine deep industry expertise with cutting-edge
-                technology knowledge to deliver transformative results that
-                drive business growth and innovation.
-              </p>
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">
+                  Strategic Technology Partners for Digital Transformation
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  At Jaasify, we combine deep industry expertise with
+                  cutting-edge technology knowledge to deliver transformative
+                  results that drive business growth and innovation.
+                </p>
+              </div>
 
+              {/* Features List */}
               <div className="space-y-6">
-                {[
-                  {
-                    icon: <HiOutlineLightningBolt className="w-6 h-6" />,
-                    title: "Business-First Mindset",
-                    description:
-                      "Align technology strategy with core business objectives to drive measurable outcomes.",
-                  },
-                  {
-                    icon: <HiOutlineShieldCheck className="w-6 h-6" />,
-                    title: "Proven Methodologies",
-                    description:
-                      "Frameworks refined through hundreds of successful enterprise engagements.",
-                  },
-                  {
-                    icon: <HiOutlineChartBar className="w-6 h-6" />,
-                    title: "Security & Compliance",
-                    description:
-                      "Enterprise-grade security practices embedded in every solution we recommend.",
-                  },
-                ].map((item, index) => (
-                  <div key={index} className="flex">
+                {features.map((feature, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="flex items-start space-x-4"
+                  >
+                    {/* Icon */}
                     <div className="flex-shrink-0">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-600 text-white shadow-md">
-                        {item.icon}
+                      <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white shadow-md">
+                        {feature.icon}
                       </div>
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-medium text-gray-900">
-                        {item.title}
+
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                        {feature.title}
                       </h3>
-                      <p className="mt-1 text-gray-600">{item.description}</p>
+                      <p className="text-gray-600 leading-relaxed">
+                        {feature.description}
+                      </p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -565,9 +561,14 @@ export default function Home() {
                 whileHover={{ y: -5 }}
                 className="bg-white p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="flex justify-center items-center mb-4 w-16 h-16 rounded-full bg-purple-100 text-purple-600 mx-auto">
-                  {item.icon}
+                {/* Icon container aligned to start (left) */}
+                <div className="flex justify-start mb-4">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-[#33c0e3] text-white shadow-md">
+                    {item.icon}
+                  </div>
                 </div>
+
+                {/* Centered text content */}
                 <h3 className="mb-3 text-xl font-semibold text-center text-gray-900">
                   {item.title}
                 </h3>
@@ -625,30 +626,6 @@ export default function Home() {
       </section>
 
       {/* Client Logos Section */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
-          <h2 className="text-center text-xl sm:text-2xl font-semibold text-gray-900 mb-12">
-            Trusted by innovative companies worldwide
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 place-items-center">
-            {clients.map((client, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                className="col-span-1 flex justify-center items-center h-20 sm:h-24 w-full"
-              >
-                <Image
-                  src={client}
-                  alt={`Client ${index + 1}`}
-                  width={160}
-                  height={80}
-                  className="object-contain h-full w-full grayscale hover:grayscale-0 transition-all duration-300"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section
