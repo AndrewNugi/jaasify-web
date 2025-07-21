@@ -30,7 +30,15 @@ import {
 } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Briefcase, Users, Target } from "lucide-react";
+import {
+  User,
+  Briefcase,
+  Users,
+  Target,
+  BarChart2,
+  Cpu,
+  Brain,
+} from "lucide-react";
 import { Zap, Shield, BarChart3 } from "lucide-react";
 
 export default function Home() {
@@ -38,11 +46,14 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Only run on client side
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 10);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   const toggleMobileMenu = () => {
@@ -77,6 +88,34 @@ export default function Home() {
         "Comprehensive roadmaps to modernize operations for the digital age.",
       icon: <Target size={24} />,
       color: "bg-purple-500",
+    },
+    {
+      title: "AI Solutions & Consulting",
+      description:
+        "Custom artificial intelligence solutions to automate processes and enhance decision-making.",
+      icon: <Brain size={24} />, // You'll need to import Brain from lucide-react
+      color: "bg-red-500",
+    },
+    {
+      title: "Machine Learning Services",
+      description:
+        "Predictive models and data science solutions tailored to your business needs.",
+      icon: <Cpu size={24} />, // You'll need to import Cpu from lucide-react
+      color: "bg-indigo-500",
+    },
+    {
+      title: "Data Analytics & BI",
+      description:
+        "Turn your data into actionable insights with advanced analytics and visualization.",
+      icon: <BarChart2 size={24} />, // You'll need to import BarChart2 from lucide-react
+      color: "bg-green-500",
+    },
+    {
+      title: "AI-Powered Automation",
+      description:
+        "Intelligent process automation to reduce costs and improve efficiency.",
+      icon: <Zap size={24} />, // Already imported from lucide-react
+      color: "bg-yellow-500",
     },
   ];
 
