@@ -39,7 +39,7 @@ import {
   Cpu,
   Brain,
 } from "lucide-react";
-import { Zap, Shield, BarChart3 } from "lucide-react";
+import { Zap, Shield } from "lucide-react";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -145,22 +145,25 @@ export default function Home() {
 
   const features = [
     {
-      icon: <Zap className="w-5 h-5" />,
-      title: "Business-First Mindset",
+      icon: <Shield className="w-8 h-8" />,
+      title: "Strategic Technology Leadership",
       description:
-        "Align technology strategy with core business objectives to drive measurable outcomes.",
+        "Executive-level guidance to align your technology investments with long-term business objectives and market opportunities.",
+      gradient: "from-blue-500 to-cyan-500",
     },
     {
-      icon: <Shield className="w-5 h-5" />,
-      title: "Business-First Mindset",
+      icon: <Zap className="w-8 h-8" />,
+      title: "Bespoke Solution Architecture",
       description:
-        "Align technology strategy with core business objectives to drive measurable outcomes.",
+        "We don't deliver off-the-shelf products. We engineer custom-fit solutions that address your specific operational challenges.",
+      gradient: "from-purple-500 to-pink-500",
     },
     {
-      icon: <BarChart3 className="w-5 h-5" />,
-      title: "Business-First Mindset",
+      icon: <FaTrophy className="w-8 h-8" />,
+      title: "ROI-Focused Execution",
       description:
-        "Align technology strategy with core business objectives to drive measurable outcomes.",
+        "Our initiatives are tied to clear KPIs, ensuring every project delivers measurable value and a tangible return on investment.",
+      gradient: "from-orange-500 to-red-500",
     },
   ];
 
