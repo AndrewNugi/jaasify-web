@@ -40,10 +40,12 @@ import {
   Brain,
 } from "lucide-react";
 import { Zap, Shield } from "lucide-react";
+import ContactUs from "./components/contact-us";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [randomStyles, setRandomStyles] = useState({});
 
   useEffect(() => {
     // Only run on client side
@@ -55,6 +57,38 @@ export default function Home() {
       return () => window.removeEventListener("scroll", handleScroll);
     }
   }, []);
+
+  useEffect(() => {
+    setRandomStyles({
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      animation: `pulse ${2 + Math.random() * 3}s infinite alternate`,
+    });
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navHeight = 80; // Adjust based on your navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Updated navigation links with onClick handlers
+  const navigationLinks = [
+    { name: "Home", href: "#hero", id: "hero" },
+    { name: "Services", href: "#services", id: "services" },
+    { name: "About", href: "#about", id: "about" },
+    { name: "Why Us", href: "#why-choose-us", id: "why-choose-us" },
+    { name: "Testimonials", href: "#testimonials", id: "testimonials" },
+    { name: "Contact", href: "#contact", id: "contact" },
+  ];
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -211,9 +245,8 @@ export default function Home() {
 
       {/* Navigation Bar */}
       <nav
-        className={`bg-white sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? "shadow-xs py-2" : "shadow-xs py-2"
-        }`}
+        className={`bg-white sticky top-0 z-50 transition-all duration-300 ${scrolled ? "shadow-xs py-2" : "shadow-xs py-2"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="flex justify-between items-center h-16">
@@ -224,21 +257,14 @@ export default function Home() {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex space-x-1">
-              {[
-                { name: "Home", href: "#hero" },
-                { name: "About", href: "#about" },
-                { name: "Services", href: "#services" },
-                { name: "Why Us", href: "#why-choose-us" },
-                { name: "Testimonials", href: "#testimonials" },
-                { name: "Contact", href: "#contact" },
-              ].map((item) => (
-                <a
+              {navigationLinks.map((item) => (
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="px-4 py-2 text-gray-700 hover:text-[#33c0e3] font-medium transition-colors duration-200"
+                  onClick={() => scrollToSection(item.id)}
+                  className="px-4 py-2 text-gray-700 hover:text-[#33c0e3] font-medium transition-colors duration-200 cursor-pointer"
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
             </div>
 
@@ -246,7 +272,7 @@ export default function Home() {
             <div className="md:hidden flex items-center">
               <button
                 type="button"
-                className="text-gray-500 hover:text-gray-900 focus:outline-none p-2 rounded-md"
+                className="text-gray-500 hover:text-gray-900 focus:outline-none p-2 rounded-md "
                 aria-controls="mobile-menu"
                 aria-expanded={isMobileMenuOpen ? "true" : "false"}
                 onClick={toggleMobileMenu}
@@ -270,26 +296,21 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden absolute left-0 right-0 top-full bg-white shadow-lg z-50"
+              className="md:hidden absolute right-4 top-full mt-2 w-50 border border-gray-100 rounded-lg bg-white shadow-lg z-50"
               style={{ willChange: "transform, opacity" }}
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {[
-                  { name: "Home", href: "#hero" },
-                  { name: "About", href: "#about" },
-                  { name: "Services", href: "#services" },
-                  { name: "Why Us", href: "#why-choose-us" },
-                  { name: "Testimonials", href: "#testimonials" },
-                  { name: "Contact", href: "#contact" },
-                ].map((item) => (
-                  <a
+                {navigationLinks.map((item) => (
+                  <button
                     key={item.name}
-                    href={item.href}
-                    className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50"
-                    onClick={toggleMobileMenu}
+                    onClick={() => {
+                      scrollToSection(item.id);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50"
                   >
                     {item.name}
-                  </a>
+                  </button>
                 ))}
               </div>
             </motion.div>
@@ -404,7 +425,7 @@ export default function Home() {
       </header>
 
       {/* Services Section */}
-      <section className="relative py-28 bg-[#1C3461] overflow-hidden">
+      <section id="services" className="relative py-10 bg-[#1C3461] overflow-hidden">
         {/* Decorative corner circles */}
         <div className="absolute top-4 left-4 w-3 h-3 bg-white rounded-full opacity-60"></div>
         <div className="absolute top-4 right-4 w-3 h-3 bg-white rounded-full opacity-60"></div>
@@ -469,7 +490,7 @@ export default function Home() {
         </div>
       </section>
       {/* About Section */}
-      <section id="about" className="py-16 lg:py-20 bg-gray-50">
+      <section id="about" className="py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image Section */}
@@ -547,7 +568,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="why-choose-us" className="py-10 sm:py-24 lg:py-32 bg-white">
+      <section id="why-choose-us" className="py-5 sm:py-10 lg:py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="max-w-3xl mx-auto text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -681,7 +702,7 @@ export default function Home() {
           <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-pink-500 rounded-full filter blur-3xl opacity-15 animate-float-delay"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-2">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -697,13 +718,7 @@ export default function Home() {
                   <div
                     key={i}
                     className="absolute w-1 h-1 bg-white rounded-full"
-                    style={{
-                      top: `${Math.random() * 100}%`,
-                      left: `${Math.random() * 100}%`,
-                      animation: `pulse ${
-                        2 + Math.random() * 3
-                      }s infinite alternate`,
-                    }}
+                    style={randomStyles}
                   ></div>
                 ))}
               </div>
@@ -711,62 +726,130 @@ export default function Home() {
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-purple-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-              <div className="relative z-20 max-w-3xl mx-auto text-center">
-                <motion.h2
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
-                >
-                  Ready to{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-                    transform
-                  </span>{" "}
-                  your business?
-                </motion.h2>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-lg text-purple-100 mb-10 max-w-2xl mx-auto"
-                >
-                  Schedule a confidential consultation with our experts and
-                  discover how we can accelerate your digital transformation.
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="flex flex-col sm:flex-row justify-center gap-4"
-                >
-                  <motion.a
-                    whileHover={{
-                      scale: 1.05,
-                      boxShadow: "0 10px 25px -5px rgba(255, 255, 255, 0.3)",
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    href="#"
-                    className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 bg-white text-purple-600 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all group"
+              <div className="relative z-20 max-w-6xl mx-auto">
+                {/* Header Section - Centered */}
+                <div className="text-center mb-12">
+                  <motion.h2
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
                   >
-                    <span className="relative z-10">Get Started</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white to-purple-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </motion.a>
+                    Ready to{" "}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
+                      transform
+                    </span>{" "}
+                    your business?
+                  </motion.h2>
 
-                  <motion.a
-                    whileHover={{
-                      scale: 1.05,
-                      boxShadow: "0 10px 25px -5px rgba(216, 180, 254, 0.4)",
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    href="#"
-                    className="relative overflow-hidden inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-all group"
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-lg text-purple-100 max-w-2xl mx-auto"
                   >
-                    <span className="relative z-10">Contact Us</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </motion.a>
-                </motion.div>
+                    Schedule a confidential consultation with our experts and
+                    discover how we can accelerate your digital transformation.
+                  </motion.p>
+                </div>
+
+                {/* Two Column Layout */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                  {/* Left Column - Contact Form */}
+                  <ContactUs />
+
+                  {/* Right Column - Contact Details */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="space-y-8"
+                  >
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-6">Contact Information</h3>
+                      <div className="space-y-6">
+                        {/* Phone */}
+                        <div className="flex items-start space-x-4">
+                          <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                            <HiOutlinePhone className="h-6 w-6 text-purple-300" />
+                          </div>
+                          <div>
+                            <h4 className="text-white font-medium mb-1">Phone</h4>
+                            <p className="text-purple-200">+254 712 345 678</p>
+                          </div>
+                        </div>
+
+                        {/* Email */}
+                        <div className="flex items-start space-x-4">
+                          <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                            <HiOutlineEnvelope className="h-6 w-6 text-purple-300" />
+                          </div>
+                          <div>
+                            <h4 className="text-white font-medium mb-1">Email</h4>
+                            <p className="text-purple-200">info@jaasify.com</p>
+                          </div>
+                        </div>
+
+                        {/* Address */}
+                        <div className="flex items-start space-x-4">
+                          <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                            <HiOutlineMapPin className="h-6 w-6 text-purple-300" />
+                          </div>
+                          <div>
+                            <h4 className="text-white font-medium mb-1">Office</h4>
+                            <p className="text-purple-200">Nairobi, Kenya</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Social Links */}
+                    <div>
+                      <h4 className="text-white font-medium mb-4">Follow Us</h4>
+                      <div className="flex space-x-4">
+                        <a href="#" className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-purple-300 hover:bg-white/30 hover:text-white transition-colors">
+                          <FaFacebookF className="h-5 w-5" />
+                        </a>
+                        <a href="#" className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-purple-300 hover:bg-white/30 hover:text-white transition-colors">
+                          <FaTwitter className="h-5 w-5" />
+                        </a>
+                        <a href="#" className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-purple-300 hover:bg-white/30 hover:text-white transition-colors">
+                          <FaLinkedinIn className="h-5 w-5" />
+                        </a>
+                        <a href="#" className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-purple-300 hover:bg-white/30 hover:text-white transition-colors">
+                          <FaGithub className="h-5 w-5" />
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Additional CTA Buttons */}
+                    {/* <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                      <motion.a
+                        whileHover={{
+                          scale: 1.05,
+                          boxShadow: "0 10px 25px -5px rgba(255, 255, 255, 0.3)",
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        href="#"
+                        className="flex-1 text-center bg-white text-purple-600 font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
+                      >
+                        Schedule Call
+                      </motion.a>
+
+                      <motion.a
+                        whileHover={{
+                          scale: 1.05,
+                          boxShadow: "0 10px 25px -5px rgba(216, 180, 254, 0.4)",
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        href="#"
+                        className="flex-1 text-center border-2 border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/10 transition-all"
+                      >
+                        Get Quote
+                      </motion.a>
+                    </div> */}
+                  </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -911,11 +994,11 @@ export default function Home() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-6">Contact</h3>
+              {/* <h3 className="text-lg font-semibold mb-6">Contact</h3> */}
               <address className="not-italic text-gray-400 space-y-3">
                 <p>Nairobi, Kenya</p>
-                <p>info@jaasify.com</p>
-                <p>+254 712 345 678</p>
+                <p>📩: info@jaasify.com</p>
+                <p>📞: +254 712 345 678</p>
               </address>
             </div>
           </div>
