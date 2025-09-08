@@ -20,7 +20,7 @@ import {
 import { FiMenu, FiX } from "react-icons/fi";
 import { auth } from "../../firebaseConfig";
 import { motion, AnimatePresence } from "framer-motion";
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { signOut, onAuthStateChanged } from "firebase/auth";
 
 export default function Admin() {
     // const [user] = useAuthState(auth)

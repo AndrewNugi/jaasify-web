@@ -31,11 +31,11 @@ export default function LeadDialog({ lead, isOpen, onClose }: LeadDetailsModalPr
         }
     };
 
-    const handleEscapeKey = (e: React.KeyboardEvent) => {
-        if (e.key === 'Escape') {
-            onClose();
-        }
-    };
+    // const handleEscapeKey = (e: React.KeyboardEvent) => {
+    //     if (e.key === 'Escape') {
+    //         onClose();
+    //     }
+    // };
 
     React.useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {

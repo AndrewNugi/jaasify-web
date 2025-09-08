@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import countryCodes from "../../CountryCodes.json";
 import { addDoc, collection } from "firebase/firestore";
@@ -34,17 +34,15 @@ export default function ContactUs() {
     const [message, setMessage] = useState("");
     const [selectedCode, setSelectedCode] = useState("+254"); // Default to Kenya country code 
     const [country, setCountry] = useState("Kenya");
-    const [status, setStatus] = useState("not_contacted");
+    const [status] = useState("not_contacted");
     const [upstreamServerSuccessMsg, setUpstreamServerSuccessMsg] = useState("");
     const [upstreamServerErrorMsg, setUpstreamServerErrorMsg] = useState("");
-    const [wordCount, setWordCount] = useState(0);
 
     const countWords = (text: string) => {
         return text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
     };
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         const name = `${firstName} ${lastName}`.trim();
         const messageWordCount = countWords(message);
 
@@ -134,7 +132,7 @@ export default function ContactUs() {
                             type="text"
                             placeholder="First Name"
                             id="firstName"
-                            value={firstName} 
+                            value={firstName}
                             onChange={(e) => setFirstName(e.target.value)}
                             className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
                         />
@@ -144,7 +142,7 @@ export default function ContactUs() {
                             type="text"
                             placeholder="Last Name"
                             id="lastName"
-                            value={lastName} 
+                            value={lastName}
                             onChange={(e) => setLastName(e.target.value)}
                             className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
                         />
@@ -156,7 +154,7 @@ export default function ContactUs() {
                         type="email"
                         placeholder="Email Address"
                         id="email"
-                        value={email} 
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
                     />
@@ -188,7 +186,7 @@ export default function ContactUs() {
                     <input
                         type="tel"
                         placeholder="Phone Number"
-                        value={mobile} 
+                        value={mobile}
                         onChange={(e) => setMobile(e.target.value)}
                         className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent"
                     />
