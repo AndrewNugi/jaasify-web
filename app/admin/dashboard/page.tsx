@@ -201,9 +201,9 @@ export default function Admin() {
                 {isLoading ? (
                     <div className="flex items-center justify-center h-screen bg-gradient-to-br from-pink-100 to-blue-100">
                         <div className="flex space-x-2">
-                            <span className="h-4 w-4 bg-pink-400 rounded-full animate-bounce"></span>
-                            <span className="h-4 w-4 bg-blue-400 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-                            <span className="h-4 w-4 bg-purple-400 rounded-full animate-bounce [animation-delay:-0.6s]"></span>
+                            <span className="h-4 w-4 bg-[#33c0e3] rounded-full animate-bounce"></span>
+                            <span className="h-4 w-4 bg-[#1C3461] rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                            <span className="h-4 w-4 bg-[#33c0e3] rounded-full animate-bounce [animation-delay:-0.6s]"></span>
                         </div>
                     </div>
                 ) : (
