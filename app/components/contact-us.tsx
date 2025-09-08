@@ -43,6 +43,7 @@ export default function ContactUs() {
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
         const name = `${firstName} ${lastName}`.trim();
         const messageWordCount = countWords(message);
 
