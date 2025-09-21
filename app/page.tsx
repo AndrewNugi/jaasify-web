@@ -217,7 +217,7 @@ export default function Home() {
             </span>
             <span className="flex items-center space-x-2">
               <HiOutlinePhone className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
-              <span>+254 712 345 678</span>
+              <span>+254 728 255 105</span>
             </span>
           </div>
           <div className="flex space-x-4">
@@ -862,12 +862,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
             <div>
               <div className="flex items-center mb-6">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg mr-2 flex items-center justify-center shadow-md">
-                  <span className="text-white font-bold text-lg">J</span>
+                <div className="flex items-center flex-shrink-0">
+                  <Image src={logo} alt="Jaasify Logo" className="h-7 w-auto" />
                 </div>
-                <span className="text-xl font-bold bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
-                  Jaasify
-                </span>
               </div>
               <p className="text-gray-400 mb-6">
                 Transforming businesses through innovative technology solutions
@@ -998,7 +995,7 @@ export default function Home() {
               <address className="not-italic text-gray-400 space-y-3">
                 <p>Nairobi, Kenya</p>
                 <p>📩: info@jaasify.com</p>
-                <p>📞: +254 712 345 678</p>
+                <p>📞: +254 728 255 105</p>
               </address>
             </div>
           </div>
