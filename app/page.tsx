@@ -6,6 +6,7 @@ import hero from "../public/images/software-engineering.jpg";
 import team from "../public/images/team-meeting.jpg";
 
 import logo from "../public/images/Jaasify.png";
+import logo1 from "../public/images/JaasifyPrimaryLogo.jpg";
 import {
   HiOutlineEnvelope,
   HiOutlineMapPin,
@@ -35,6 +36,9 @@ import {
   Cpu,
   BarChart2,
   Zap,
+  MapPin,
+  Phone,
+  Send,
 } from "lucide-react";
 
 import { Shield } from "lucide-react";
@@ -43,7 +47,7 @@ import ContactUs from "./components/contact-us";
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [randomStyles, setRandomStyles] = useState({});
+  const [, setRandomStyles] = useState({});
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
@@ -770,9 +774,9 @@ export default function Home() {
       {/* CTA Section */}
       <section
         id="contact"
-        className="relative overflow-hidden  sm:py-24 lg:py-10"
+        className="relative overflow-hidden py-16 sm:py-24 lg:py-32 bg-gradient-to-b from-gray-50 to-white"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -781,45 +785,67 @@ export default function Home() {
             className="relative z-10"
           >
             {/* Glowing card container */}
-            <div className="relative overflow-hidden px-8 py-16 sm:p-16 shadow-2xl bg-gradient-to-br from-purple-900 to-indigo-800 border border-purple-500/30">
+            <div className="relative overflow-hidden rounded-3xl px-8 py-16 sm:p-16 shadow-2xl bg-gradient-to-br from-purple-900 to-indigo-800 border border-purple-500/30">
               {/* Particle animation background */}
               <div className="absolute inset-0 opacity-10">
                 {[...Array(20)].map((_, i) => (
-                  <div
+                  <motion.div
                     key={i}
                     className="absolute w-1 h-1 bg-white rounded-full"
-                    style={randomStyles}
-                  ></div>
+                    initial={{
+                      x: Math.random() * 100 + "%",
+                      y: Math.random() * 100 + "%",
+                    }}
+                    animate={{
+                      x: [
+                        Math.random() * 100 + "%",
+                        Math.random() * 100 + "%",
+                        Math.random() * 100 + "%",
+                      ],
+                      y: [
+                        Math.random() * 100 + "%",
+                        Math.random() * 100 + "%",
+                        Math.random() * 100 + "%",
+                      ],
+                    }}
+                    transition={{
+                      duration: 10 + Math.random() * 20,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
                 ))}
               </div>
 
               {/* Glow effect */}
-              <div className="absolute -inset-1  opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
 
               <div className="relative z-20 max-w-6xl mx-auto">
                 {/* Header Section - Centered */}
                 <div className="text-center mb-12">
                   <motion.h2
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                     className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
                   >
-                    Ready to{" "}
+                    Contact{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
-                      transform
-                    </span>{" "}
-                    your business?
+                      our team
+                    </span>
                   </motion.h2>
 
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
                     className="text-lg text-purple-100 max-w-2xl mx-auto"
                   >
-                    Schedule a consultation with our experts and discover how we
-                    can accelerate your digital transformation.
+                    Got any questions about the product or scaling on our
+                    platform? We&apos;re here to help. Chat to our friendly team
+                    24/7 and get onboard in less than 5 minutes.
                   </motion.p>
                 </div>
 
@@ -831,113 +857,65 @@ export default function Home() {
                   {/* Right Column - Contact Details */}
                   <motion.div
                     initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.5 }}
                     className="space-y-8"
                   >
-                    <div>
-                      <h3 className="text-xl font-semibold text-white mb-6">
-                        Contact Information
+                    {/* Chat with us */}
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                      <h3 className="text-xl font-semibold text-white mb-4">
+                        Chat with us
                       </h3>
-                      <div className="space-y-6">
-                        {/* Phone */}
-                        <div className="flex items-start space-x-4">
-                          <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                            <HiOutlinePhone className="h-6 w-6 text-purple-300" />
-                          </div>
-                          <div>
-                            <h4 className="text-white font-medium mb-1">
-                              Phone
-                            </h4>
-                            <p className="text-purple-200">+254713666622</p>
-                          </div>
-                        </div>
-
-                        {/* Email */}
-                        <div className="flex items-start space-x-4">
-                          <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                            <HiOutlineEnvelope className="h-6 w-6 text-purple-300" />
-                          </div>
-                          <div>
-                            <h4 className="text-white font-medium mb-1">
-                              Email
-                            </h4>
-                            <p className="text-purple-200">info@jaasify.com</p>
-                          </div>
-                        </div>
-
-                        {/* Address */}
-                        <div className="flex items-start space-x-4">
-                          <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
-                            <HiOutlineMapPin className="h-6 w-6 text-purple-300" />
-                          </div>
-                          <div>
-                            <h4 className="text-white font-medium mb-1">
-                              Office
-                            </h4>
-                            <p className="text-purple-200">Nairobi, Kenya</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Social Links */}
-                    <div>
-                      <h4 className="text-white font-medium mb-4">Follow Us</h4>
-                      <div className="flex space-x-4">
+                      <p className="text-purple-200 mb-6">
+                        Speak to our friendly team via live chat.
+                      </p>
+                      <div className="space-y-3">
                         <a
-                          href="#"
-                          className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-purple-300 hover:bg-white/30 hover:text-white transition-colors"
+                          href="mailto:info@jaasify.com"
+                          className="flex items-center text-purple-300 hover:text-white transition-colors group"
                         >
-                          <FaFacebookF className="h-5 w-5" />
-                        </a>
-                        <a
-                          href="#"
-                          className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-purple-300 hover:bg-white/30 hover:text-white transition-colors"
-                        >
-                          <FaTwitter className="h-5 w-5" />
-                        </a>
-                        <a
-                          href="#"
-                          className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-purple-300 hover:bg-white/30 hover:text-white transition-colors"
-                        >
-                          <FaLinkedinIn className="h-5 w-5" />
-                        </a>
-                        <a
-                          href="#"
-                          className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center text-purple-300 hover:bg-white/30 hover:text-white transition-colors"
-                        >
-                          <FaGithub className="h-5 w-5" />
+                          <Send className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
+                          <span className="underline">Shoot us an email</span>
                         </a>
                       </div>
                     </div>
 
-                    {/* Additional CTA Buttons */}
-                    {/* <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                      <motion.a
-                        whileHover={{
-                          scale: 1.05,
-                          boxShadow: "0 10px 25px -5px rgba(255, 255, 255, 0.3)",
-                        }}
-                        whileTap={{ scale: 0.98 }}
-                        href="#"
-                        className="flex-1 text-center bg-white text-purple-600 font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
+                    {/* Call us */}
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                      <h3 className="text-xl font-semibold text-white mb-4">
+                        Call us
+                      </h3>
+                      <p className="text-purple-200 mb-4">
+                        Call our team Mon-Fri from 8am to 5pm.
+                      </p>
+                      <a
+                        href="tel:+254713666622"
+                        className="flex items-center text-purple-300 hover:text-white transition-colors group"
                       >
-                        Schedule Call
-                      </motion.a>
+                        <Phone className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
+                        <span className="text-lg font-medium underline">
+                          +254 713 666 622
+                        </span>
+                      </a>
+                    </div>
 
-                      <motion.a
-                        whileHover={{
-                          scale: 1.05,
-                          boxShadow: "0 10px 25px -5px rgba(216, 180, 254, 0.4)",
-                        }}
-                        whileTap={{ scale: 0.98 }}
+                    {/* Visit us */}
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                      <h3 className="text-xl font-semibold text-white mb-4">
+                        Visit us
+                      </h3>
+                      <p className="text-purple-200 mb-4">
+                        Chat to us in person at our Nairobi HQ.
+                      </p>
+                      <a
                         href="#"
-                        className="flex-1 text-center border-2 border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/10 transition-all"
+                        className="flex items-start text-purple-300 hover:text-white transition-colors group"
                       >
-                        Get Quote
-                      </motion.a>
-                    </div> */}
+                        <MapPin className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                        <span className="underline">Nairobi, Kenya</span>
+                      </a>
+                    </div>
                   </motion.div>
                 </div>
               </div>
@@ -953,9 +931,9 @@ export default function Home() {
             <div>
               <div className="flex items-center mb-6">
                 <Image
-                  src={logo}
+                  src={logo1}
                   alt="Jaasify Technologies Logo"
-                  width={40}
+                  width={100}
                   height={40}
                   className="h-10 w-auto"
                 />
