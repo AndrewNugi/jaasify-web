@@ -1,9 +1,9 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import hero from "../public/images/software-engineering.jpg";
-import team from "../public/images/team-meeting.jpg";
 
 import logo from "../public/images/Jaasify.png";
 import logo1 from "../public/images/JaasifyPrimaryLogo.jpg";
@@ -31,15 +31,14 @@ import {
   User,
   Briefcase,
   Users,
-  Target,
   Brain,
   Cpu,
   BarChart2,
-  Zap,
   MapPin,
   Phone,
   Send,
 } from "lucide-react";
+import { Zap, Target, Code2, Sparkles, CheckCircle2 } from "lucide-react";
 
 import { Shield } from "lucide-react";
 import ContactUs from "./components/contact-us";
@@ -156,30 +155,12 @@ export default function Home() {
     },
   ];
 
-  const features = [
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Strategic Technology Leadership",
-      description:
-        "Executive-level guidance to align your technology investments with long-term business objectives and market opportunities.",
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Bespoke Solution Architecture",
-      description:
-        "We don't deliver off-the-shelf products. We engineer custom-fit solutions that address your specific operational challenges.",
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: <FaTrophy className="w-8 h-8" />,
-      title: "ROI-Focused Execution",
-      description:
-        "Our initiatives are tied to clear KPIs, ensuring every project delivers measurable value and a tangible return on investment.",
-      gradient: "from-orange-500 to-red-500",
-    },
+  const coreValues = [
+    "Scalable Solutions",
+    "Precision Delivery",
+    "Global Standards",
+    "Creative Design",
   ];
-
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans antialiased">
       {/* Top contact bar */}
@@ -533,89 +514,406 @@ export default function Home() {
         </div>
       </section>
       {/* About Section */}
-      <section id="about" className="py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Image Section */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.005] transition-transform duration-300 ease-in-out">
-                <Image
-                  src={team}
-                  alt="Team collaborating on digital solutions"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-purple-900/20 mix-blend-multiply"></div>
-              </div>
-            </motion.div>
+      <section
+        id="about"
+        className="relative py-20 lg:py-28 bg-gradient-to-br from-[#1a2332] via-[#1e2a3a] to-[#0f1419] overflow-hidden"
+      >
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#33c0e3] rounded-full blur-3xl animate-pulse"></div>
+          <div
+            className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse"
+            style={{ animationDelay: "1s" }}
+          ></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#33c0e3]/20 rounded-full blur-3xl"></div>
+        </div>
 
-            {/* Content Section */}
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(51,192,227,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(51,192,227,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left Column - Content */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.7 }}
               className="space-y-8"
             >
+              {/* Header */}
               <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">
-                  Strategic Technology Partners for Digital Transformation
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  At Jaasify, we combine deep industry expertise with
-                  cutting-edge technology knowledge to deliver transformative
-                  results that drive business growth and innovation.
-                </p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-block mb-4"
+                >
+                  <span className="text-[#33c0e3] text-sm font-mono tracking-wider">
+                    // About us
+                  </span>
+                </motion.div>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+                >
+                  Africa&lsquo;s Premier{" "}
+                  <span className="text-[#33c0e3]">Tech</span>
+                  <br />
+                  Partner
+                </motion.h2>
               </div>
 
-              {/* Features List */}
-              <div className="space-y-6">
-                {features.map((feature, index) => (
+              {/* Description */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="space-y-6"
+              >
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  At <span className="text-white font-semibold">JaaSify</span>,
+                  we don&lsquo;t just write code, we craft digital experiences
+                  that empower businesses across Africa and beyond.
+                </p>
+
+                <p className="text-gray-400 leading-relaxed">
+                  Founded in Nairobi Kenya, our journey began with a
+                  revolutionary belief: Africa is not just a consumer of
+                  technology, it is a creator and innovator. We combine
+                  cutting-edge global standards with uniquely African ingenuity.
+                </p>
+
+                <div className="relative p-6 bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl backdrop-blur-sm">
+                  <p className="text-gray-200 italic leading-relaxed">
+                    &ldquo;Every solution we craft is built to endure, adapt,
+                    and grow empowering businesses to thrive in an ever-changing
+                    digital landscape.&ldquo;
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Core Values Grid */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                className="grid grid-cols-2 gap-4 pt-4"
+              >
+                {coreValues.map((value, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="flex items-start space-x-4"
+                    transition={{ delay: 0.6 + index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-all duration-300 group"
                   >
-                    {/* Icon */}
-                    <div className="flex-shrink-0">
-                      <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white shadow-md">
-                        {feature.icon}
-                      </div>
+                    <div className="p-2 bg-[#33c0e3]/20 rounded-lg group-hover:bg-[#33c0e3]/30 transition-colors">
+                      {index === 0 && (
+                        <Code2 className="w-5 h-5 text-[#33c0e3]" />
+                      )}
+                      {index === 1 && (
+                        <Target className="w-5 h-5 text-[#33c0e3]" />
+                      )}
+                      {index === 2 && (
+                        <Shield className="w-5 h-5 text-[#33c0e3]" />
+                      )}
+                      {index === 3 && (
+                        <Sparkles className="w-5 h-5 text-[#33c0e3]" />
+                      )}
                     </div>
-
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                        {feature.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
+                    <span className="text-white font-medium text-sm">
+                      {value}
+                    </span>
                   </motion.div>
                 ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Right Column - Code Terminal Mockup */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative"
+            >
+              {/* Terminal Window */}
+              <div className="relative bg-[#0d1117] border border-gray-700/50 rounded-xl shadow-2xl overflow-hidden">
+                {/* Terminal Header */}
+                <div className="flex items-center justify-between px-4 py-3 bg-[#161b22] border-b border-gray-700/50">
+                  <div className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-gray-400 text-xs font-mono">
+                      JaaSify.tsx
+                    </span>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-3 py-1 bg-[#33c0e3] text-white text-xs font-medium rounded flex items-center gap-1 hover:bg-[#2ba9cc] transition-colors"
+                    >
+                      ▶ Run
+                    </motion.button>
+                  </div>
+                </div>
+
+                {/* Code Content */}
+                <div className="p-6 font-mono text-sm space-y-2 overflow-x-auto">
+                  <div className="flex items-start gap-4">
+                    <span className="text-gray-600 select-none">14</span>
+                    <span className="text-gray-400">{"};"}</span>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <span className="text-gray-600 select-none">15</span>
+                    <span></span>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <span className="text-gray-600 select-none">16</span>
+                    <span className="text-gray-500">
+                      // Algorithm (Recursive Fibonacci)
+                    </span>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <span className="text-gray-600 select-none">17</span>
+                    <code>
+                      <span className="text-purple-400">const</span>{" "}
+                      <span className="text-blue-400">fibonacci</span>{" "}
+                      <span className="text-white">=</span>{" "}
+                      <span className="text-gray-400">(</span>
+                      <span className="text-orange-400">n</span>
+                      <span className="text-white">:</span>{" "}
+                      <span className="text-green-400">number</span>
+                      <span className="text-gray-400">)</span>{" "}
+                      <span className="text-white">=&gt;</span>
+                    </code>
+                  </div>
+
+                  <div className="flex items-start gap-4 pl-4">
+                    <span className="text-gray-600 select-none">18</span>
+                    <code>
+                      <span className="text-orange-400">n</span>{" "}
+                      <span className="text-white">&lt;</span>{" "}
+                      <span className="text-orange-300">1</span>{" "}
+                      <span className="text-white">?</span>{" "}
+                      <span className="text-orange-400">n</span>{" "}
+                      <span className="text-white">:</span>{" "}
+                      <span className="text-blue-400">fibonacci</span>
+                      <span className="text-gray-400">(</span>
+                      <span className="text-orange-400">n</span>{" "}
+                      <span className="text-white">-</span>{" "}
+                      <span className="text-orange-300">1</span>
+                      <span className="text-gray-400">)</span>{" "}
+                      <span className="text-white">+</span>{" "}
+                      <span className="text-blue-400">fibonacci</span>
+                      <span className="text-gray-400">(</span>
+                      <span className="text-orange-400">n</span>{" "}
+                      <span className="text-white">-</span>{" "}
+                      <span className="text-orange-300">2</span>
+                      <span className="text-gray-400">);</span>
+                    </code>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <span className="text-gray-600 select-none">19</span>
+                    <span></span>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <span className="text-gray-600 select-none">20</span>
+                    <code>
+                      <span className="text-purple-400">const</span>{" "}
+                      <span className="text-blue-400">empower</span>{" "}
+                      <span className="text-white">=</span>{" "}
+                      <span className="text-gray-400">(</span>
+                      <span className="text-orange-400">values</span>
+                      <span className="text-white">:</span>{" "}
+                      <span className="text-green-400">string[]</span>
+                      <span className="text-gray-400">)</span>{" "}
+                      <span className="text-white">=&gt;</span>
+                    </code>
+                  </div>
+
+                  <div className="flex items-start gap-4 pl-4">
+                    <span className="text-gray-600 select-none">21</span>
+                    <code>
+                      <span className="text-orange-400">values</span>
+                      <span className="text-white">.</span>
+                      <span className="text-blue-400">map</span>
+                      <span className="text-gray-400">((</span>
+                      <span className="text-orange-400">v</span>
+                      <span className="text-gray-400">,</span>{" "}
+                      <span className="text-orange-400">i</span>
+                      <span className="text-gray-400">)</span>{" "}
+                      <span className="text-white">=&gt;</span>{" "}
+                      <span className="text-yellow-300">`$</span>
+                      <span className="text-gray-400">{"{"}</span>
+                      <span className="text-orange-400">i</span>{" "}
+                      <span className="text-white">+</span>{" "}
+                      <span className="text-orange-300">1</span>
+                      <span className="text-gray-400">{"}"}</span>
+                      <span className="text-yellow-300">. $</span>
+                      <span className="text-gray-400">{"{"}</span>
+                      <span className="text-orange-400">v</span>
+                      <span className="text-gray-400">{"}"}</span>
+                      <span className="text-yellow-300">`</span>
+                      <span className="text-gray-400">);</span>
+                    </code>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <span className="text-gray-600 select-none">22</span>
+                    <span></span>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <span className="text-gray-600 select-none">23</span>
+                    <code>
+                      <span className="text-purple-400">export</span>{" "}
+                      <span className="text-purple-400">default</span>{" "}
+                      <span className="text-purple-400">function</span>{" "}
+                      <span className="text-yellow-400">JaaSify</span>
+                      <span className="text-gray-400">() {"{"}</span>
+                    </code>
+                  </div>
+
+                  <div className="flex items-start gap-4 pl-4">
+                    <span className="text-gray-600 select-none">24</span>
+                    <code>
+                      <span className="text-purple-400">const</span>{" "}
+                      <span className="text-blue-400">showcase</span>{" "}
+                      <span className="text-white">=</span>{" "}
+                      <span className="text-blue-400">fibonacci</span>
+                      <span className="text-gray-400">(</span>
+                      <span className="text-orange-300">7</span>
+                      <span className="text-gray-400">);</span>{" "}
+                      <span className="text-gray-500">// symbolic</span>
+                    </code>
+                  </div>
+
+                  <div className="flex items-start gap-4 pl-8">
+                    <span className="text-gray-600 select-none">25</span>
+                    <code>
+                      <span className="text-gray-500">
+                        &ldquo;growth sequence&ldquo;
+                      </span>
+                    </code>
+                  </div>
+                </div>
+
+                {/* Console Output */}
+                <div className="bg-[#0d1117] border-t border-gray-700/50 p-4 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <span className="text-gray-400 text-xs font-mono">
+                      Console Output:
+                    </span>
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1 }}
+                    className="space-y-1 text-xs font-mono"
+                  >
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-green-400">
+                        JaaSify component rendered successfully
+                      </span>
+                    </div>
+                    <div className="text-gray-400 pl-6">
+                      → Mission: &ldquo;Transform Africa Through Code &
+                      Innovation&quot;
+                    </div>
+                    <div className="text-gray-400 pl-6">
+                      → Vision: &ldquo;Global Standards, Local Ingenuity&ldquo;
+                    </div>
+                    <div className="text-gray-400 pl-6">
+                      → Values: 1. Scalable Solutions, 2. Precision Delivery, 3.
+                      Global Standards, 4. Creative Design
+                    </div>
+                    <div className="text-[#33c0e3] pl-6">
+                      → fibonacci(7) ={" "}
+                      <span className="text-yellow-400">13</span>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5 }}
+                    className="flex items-center gap-2 pt-2"
+                  >
+                    <span className="text-green-400 text-xs">Running...</span>
+                    <div className="flex gap-1">
+                      <motion.div
+                        animate={{ opacity: [0.3, 1, 0.3] }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          delay: 0,
+                        }}
+                        className="w-1 h-1 rounded-full bg-green-400"
+                      />
+                      <motion.div
+                        animate={{ opacity: [0.3, 1, 0.3] }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          delay: 0.3,
+                        }}
+                        className="w-1 h-1 rounded-full bg-green-400"
+                      />
+                      <motion.div
+                        animate={{ opacity: [0.3, 1, 0.3] }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          delay: 0.6,
+                        }}
+                        className="w-1 h-1 rounded-full bg-green-400"
+                      />
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Bottom bar */}
+                <div className="bg-[#161b22] px-4 py-2 flex items-center justify-end border-t border-gray-700/50">
+                  <span className="text-gray-500 text-xs font-mono">
+                    TypeScript v5.0
+                  </span>
+                </div>
               </div>
+
+              {/* Floating badge */}
             </motion.div>
           </div>
+
+          {/* Bottom Features Section */}
         </div>
       </section>
-
       {/* Why Choose Us Section */}
       <section id="why-choose-us" className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              The Jaasify Advantage
+              The JaaSify Advantage
             </h2>
             <p className="text-lg text-gray-600">
               We stand out through our commitment to excellence, innovation, and
@@ -695,7 +993,7 @@ export default function Home() {
               Meet the Experts
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Hear from the Minds Behind Jaasify
+              Hear from the Minds Behind JaaSify
             </h2>
             <p className="text-lg text-gray-600">
               Learn how our specialists approach innovation, engineering, and
@@ -708,19 +1006,19 @@ export default function Home() {
             {[
               {
                 name: "Joseph Kanyua",
-                role: "Business Analysis & Solution Architecture",
+                role: "Founder and Prinicipal Strategist",
                 video: "/videos/lewis.mp4",
                 poster: "/images/lewis-thumbnail.jpg",
               },
               {
                 name: "Engineering team",
-                role: "Software Engineering & AI",
+                role: "Chief Solutions Architect",
                 video: "/videos/engineer.mp4",
                 poster: "/images/engineer-thumbnail.jpg",
               },
               {
                 name: "Dedan",
-                role: "Project Management",
+                role: "Director of Project Delivery",
                 video: "/videos/dedan.mp4",
                 poster: "/images/dedan-thumbnail.jpg",
               },
@@ -758,9 +1056,6 @@ export default function Home() {
 
                 {/* Info Section */}
                 <div className="p-6 text-center">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                    {person.name}
-                  </h3>
                   <p className="text-sm text-gray-500">{person.role}</p>
                 </div>
               </motion.div>
@@ -1074,7 +1369,7 @@ export default function Home() {
 
           <div className="border-t border-gray-800 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} Jaasify Technologies. All rights
+              &copy; {new Date().getFullYear()} JaaSify Technologies. All rights
               reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
