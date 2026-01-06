@@ -359,26 +359,31 @@ export default function Home() {
                 drive innovation, efficiency, and measurable business outcomes.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 justify-center lg:justify-start">
-                <motion.button
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                  className="bg-[#1C3461] hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 text-sm sm:text-base"
-                >
-                  Get Started
-                </motion.button>
-                <motion.button
-                  whileHover={{
-                    scale: 1.03,
-                    boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                  className="border border-[#33c0e3] hover:border-[#33c0e3] text-[#33c0e3] hover:text-[#33c0e3] px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50 text-sm sm:text-base"
-                >
-                  Learn More
-                </motion.button>
+               {/* Get Started Button */}
+<motion.button
+  whileHover={{
+    scale: 1.03,
+    boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+  }}
+  whileTap={{ scale: 0.97 }}
+  onClick={() => scrollToSection('contact')}
+  className="bg-[#1C3461] cursor-pointer hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 text-sm sm:text-base"
+>
+  Get Started
+</motion.button>
+
+
+<motion.button
+  whileHover={{
+    scale: 1.03,
+    boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
+  }}
+  whileTap={{ scale: 0.97 }}
+  onClick={() => scrollToSection('about')}
+  className="border cursor-pointer border-[#33c0e3] hover:border-[#33c0e3] text-[#33c0e3] hover:text-[#33c0e3] px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50 text-sm sm:text-base"
+>
+  Learn More
+</motion.button>
               </div>
             </motion.div>
           </div>
