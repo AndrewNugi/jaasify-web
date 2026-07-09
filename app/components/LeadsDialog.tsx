@@ -62,7 +62,7 @@ export default function LeadDialog({ lead, isOpen, onClose }: LeadDetailsModalPr
         >
             <div className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden animate-fadeIn scale-95">
                 {/* Modal Header */}
-                <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-[#1C3461]">
+                <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-[#1C3462]">
                     <h2 className="text-2xl font-semibold text-white pl-2">Lead Details</h2>
                     <button
                         onClick={onClose}
@@ -77,8 +77,8 @@ export default function LeadDialog({ lead, isOpen, onClose }: LeadDetailsModalPr
                     <div className="flex flex-col md:flex-row h-[calc(90vh-120px)]">
                         {/* Left Panel - Contact Information */}
                         <div className="md:w-1/2 py-4 px-6 bg-white to-white">
-                            <h3 className="text-lg font-semibold text-[#1C3461] mb-4 flex items-center">
-                                <span className="w-2 h-2 bg-[#33c0e3] rounded-full mr-2"></span>
+                            <h3 className="text-lg font-semibold text-[#1C3462] mb-4 flex items-center">
+                                <span className="w-2 h-2 bg-[#39BFE1] rounded-full mr-2"></span>
                                 Contact Information
                             </h3>
 
@@ -132,8 +132,8 @@ export default function LeadDialog({ lead, isOpen, onClose }: LeadDetailsModalPr
 
                         {/* Right Panel - Enquiry Details */}
                         <div className="lg:w-3/4 p-4 bg-white">
-                            <h3 className="text-lg font-semibold text-[#1C3461] mb-6 flex items-center">
-                                <span className="w-2 h-2 bg-[#33c0e3] rounded-full mr-2"></span>
+                            <h3 className="text-lg font-semibold text-[#1C3462] mb-6 flex items-center">
+                                <span className="w-2 h-2 bg-[#39BFE1] rounded-full mr-2"></span>
                                 Enquiry Details
                             </h3>
 

@@ -56,9 +56,9 @@ export default function AdminLogin() {
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
             {/* Background decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-10 left-10 w-64 h-64 bg-[#33c0e3]/10 rounded-full opacity-10 blur-3xl animate-blob"></div>
+                <div className="absolute top-10 left-10 w-64 h-64 bg-[#39BFE1]/10 rounded-full opacity-10 blur-3xl animate-blob"></div>
                 <div className="absolute bottom-10 right-10 w-64 h-64 bg-blue-200 rounded-full opacity-10 blur-3xl animate-blob-delay"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#1C3461]/5 rounded-full opacity-5 blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#1C3462]/5 rounded-full opacity-5 blur-3xl"></div>
             </div>
 
             <motion.div
@@ -83,7 +83,7 @@ export default function AdminLogin() {
                                     alt="Jaasify Logo"
                                     className="h-12 w-auto"
                                 />
-                                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#33c0e3] rounded-full flex items-center justify-center">
+                                <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#39BFE1] rounded-full flex items-center justify-center">
                                     <HiOutlineLockClosed className="w-2 h-2 text-white" />
                                 </div>
                             </div>
@@ -125,7 +125,7 @@ export default function AdminLogin() {
                                     name="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    className={`block w-full pl-10 pr-3 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:border-[#33c0e3] transition-colors ${errorMessage ? "border-red-300" : "border-gray-300"
+                                    className={`block w-full pl-10 pr-3 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#39BFE1] focus:border-[#39BFE1] transition-colors ${errorMessage ? "border-red-300" : "border-gray-300"
                                         }`}
                                     placeholder="Enter your admin email"
                                     autoComplete="email"
@@ -149,7 +149,7 @@ export default function AdminLogin() {
                                     name="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className={`block w-full pl-10 pr-10 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:border-[#33c0e3] transition-colors ${errorMessage ? "border-red-300" : "border-gray-300"
+                                    className={`block w-full pl-10 pr-10 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#39BFE1] focus:border-[#39BFE1] transition-colors ${errorMessage ? "border-red-300" : "border-gray-300"
                                         }`}
                                     placeholder="Enter your password"
                                     autoComplete="current-password"
@@ -175,9 +175,9 @@ export default function AdminLogin() {
                             whileTap={{ scale: isLoading ? 1 : 0.98 }}
                             type="submit"
                             disabled={isLoading}
-                            className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#33c0e3] cursor-pointer ${isLoading
+                            className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#39BFE1] cursor-pointer ${isLoading
                                 ? "bg-gray-400 cursor-not-allowed"
-                                : "bg-[#1C3461] hover:bg-[#2a4a7a]"
+                                : "bg-[#1C3462] hover:bg-[#2a4a7a]"
                                 }`}
                         >
                             {isLoading ? (
@@ -197,7 +197,7 @@ export default function AdminLogin() {
                     <div className="mt-6 text-center">
                         <button
                             onClick={() => router.push("/")}
-                            className="p-1.5 text-sm text-gray-500 hover:text-[#1C3461] transition-all duration-300 hover:border-[1px] hover:border-[#1C3461] rounded-xl cursor-pointer 
+                            className="p-1.5 text-sm text-gray-500 hover:text-[#1C3462] transition-all duration-300 hover:border-[1px] hover:border-[#1C3462] rounded-xl cursor-pointer 
                                         hover:shadow-md hover:-translate-y-0.5 hover:brightness-100"
                         >
                             ← Back to main site

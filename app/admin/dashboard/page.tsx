@@ -138,7 +138,7 @@ export default function Admin() {
     return (
         <div className="h-full bg-gradient-to-br from-gray-50 to-blue-50 overflow-auto">
             {/* Header Section */}
-            {/* <div className="top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#1C3461] to-[#33c0e3] text-white py-5 px-8 shadow-lg">
+            {/* <div className="top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#1C3462] to-[#39BFE1] text-white py-5 px-8 shadow-lg">
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
                     <div>
                         <h1 className="text-2xl md:text-3xl font-bold">Admin Dashboard</h1>
@@ -151,23 +151,19 @@ export default function Admin() {
                             signOut(auth);
                             sessionStorage.removeItem("adminAuth");
                         }}
-                        className="ml-4 px-5 py-2 rounded-lg bg-white text-[#1C3461] font-semibold shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:bg-gray-100 transition-all duration-300"
+                        className="ml-4 px-5 py-2 rounded-lg bg-white text-[#1C3462] font-semibold shadow-md hover:shadow-lg hover:-translate-y-0.5 hover:bg-gray-100 transition-all duration-300"
                     >
                         Log out
                     </button>
                 </div>
             </div> */}
             {/* Top contact bar */}
-            <div className="bg-[#33c0e3] text-white py-3 px-4 sm:px-6 lg:px-20">
+            <div className="bg-[#39BFE1] text-white py-3 px-4 sm:px-6 lg:px-20">
                 <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-sm space-y-2 sm:space-y-0">
                     <div className="flex flex-wrap justify-center sm:justify-start items-center space-x-4 sm:space-x-6">
                         <span className="flex items-center space-x-2">
                             <HiOutlineEnvelope className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
-                            <span>info@jaasify.com</span>
-                        </span>
-                        <span className="flex items-center space-x-2">
-                            <HiOutlineMapPin className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
-                            <span>Nairobi, Kenya</span>
+                        <span>info@jaasify.com</span>
                         </span>
                         <span className="flex items-center space-x-2">
                             <HiOutlinePhone className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
@@ -199,11 +195,11 @@ export default function Admin() {
 
             <div className="h-full bg-gradient-to-br from-gray-50 to-blue-50 overflow-auto">
                 {isLoading ? (
-                    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-[#1C3461]/5 to-blue-100">
+                    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-[#1C3462]/5 to-blue-100">
                         <div className="flex space-x-2">
-                            <span className="h-4 w-4 bg-[#33c0e3] rounded-full animate-bounce"></span>
-                            <span className="h-4 w-4 bg-[#1C3461] rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-                            <span className="h-4 w-4 bg-[#33c0e3] rounded-full animate-bounce [animation-delay:-0.6s]"></span>
+                            <span className="h-4 w-4 bg-[#39BFE1] rounded-full animate-bounce"></span>
+                            <span className="h-4 w-4 bg-[#1C3462] rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                            <span className="h-4 w-4 bg-[#39BFE1] rounded-full animate-bounce [animation-delay:-0.6s]"></span>
                         </div>
                     </div>
                 ) : (
@@ -217,7 +213,7 @@ export default function Admin() {
                                 <div className="flex justify-between items-center h-16">
                                     {/* Logo - Improved alignment */}
                                     <div className="flex items-center flex-shrink-0">
-                                        <Image src={logo} alt="Jaasify Logo" className="h-10 w-auto" /> <span className="font-semibold text-3xl text-[#1C3461] italic">Admin</span>
+                                        <Image src={logo} alt="Jaasify Logo" className="h-10 w-auto" /> <span className="font-semibold text-3xl text-[#1C3462] italic">Admin</span>
                                     </div>
 
                                     {/* Desktop Navigation Links */}
@@ -227,7 +223,7 @@ export default function Admin() {
                                                 await signOutUser();
                                                 // sessionStorage.removeItem("adminAuth");
                                             }}
-                                            className="p-2 rounded-xl bg-white text-[#1C3461] hover:-translate-y-0.2 hover:border-bottom-[1px] hover:border-[#1C3461] transition-all duration-300 cursor-pointer"
+                                            className="p-2 rounded-xl bg-white text-[#1C3462] hover:-translate-y-0.2 hover:border-bottom-[1px] hover:border-[#1C3462] transition-all duration-300 cursor-pointer"
                                         >
                                             Log out
                                         </button>
@@ -270,8 +266,8 @@ export default function Admin() {
                                                     signOutUser();
                                                     router.push("/");
                                                 }}
-                                                className="px-4 py-2 absolute right-4 top-[-10px] rounded-lg bg-white text-[#1C3461] shadow-md text-sm font-medium 
-                                           hover:bg-[#1C3461] hover:text-white hover:scale-105 transition-all duration-300"
+                                                className="px-4 py-2 absolute right-4 top-[-10px] rounded-lg bg-white text-[#1C3462] shadow-md text-sm font-medium 
+                                           hover:bg-[#1C3462] hover:text-white hover:scale-105 transition-all duration-300"
                                             >
                                                 Log out
                                             </button>
@@ -291,7 +287,7 @@ export default function Admin() {
                                             <span className="text-xl">👥</span>
                                         </div>
                                         <div>
-                                            <p className="text-2xl font-bold text-[#1C3461]">{leads.length}</p>
+                                            <p className="text-2xl font-bold text-[#1C3462]">{leads.length}</p>
                                             <p className="text-gray-600 font-medium">Total Leads</p>
                                         </div>
                                     </div>
@@ -303,7 +299,7 @@ export default function Admin() {
                                             <span className="text-xl">📞</span>
                                         </div>
                                         <div>
-                                            <p className="text-2xl font-bold text-[#1C3461]">{contactedCount}</p>
+                                            <p className="text-2xl font-bold text-[#1C3462]">{contactedCount}</p>
                                             <p className="text-gray-600 font-medium">Contacted</p>
                                         </div>
                                     </div>
@@ -312,7 +308,7 @@ export default function Admin() {
 
                             {/* Leads Table */}
                             <div className="bg-white rounded-2xl shadow-xl border border-gray-100">
-                                <div className="bg-[#1C3461] text-white px-6 py-4 rounded-t-xl">
+                                <div className="bg-[#1C3462] text-white px-6 py-4 rounded-t-xl">
                                     <h2 className="text-xl font-bold">Enquiries</h2>
                                 </div>
 
@@ -320,13 +316,13 @@ export default function Admin() {
                                     <table className="min-w-full">
                                         <thead className="bg-gray-50">
                                             <tr>
-                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3461] uppercase tracking-wider">Name</th>
-                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3461] uppercase tracking-wider">Email</th>
-                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3461] uppercase tracking-wider">Mobile</th>
-                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3461] uppercase tracking-wider">Country</th>
-                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3461] uppercase tracking-wider">Enquiry</th>
-                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3461] uppercase tracking-wider">Date</th>
-                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3461] uppercase tracking-wider">Contacted</th>
+                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3462] uppercase tracking-wider">Name</th>
+                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3462] uppercase tracking-wider">Email</th>
+                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3462] uppercase tracking-wider">Mobile</th>
+                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3462] uppercase tracking-wider">Country</th>
+                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3462] uppercase tracking-wider">Enquiry</th>
+                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3462] uppercase tracking-wider">Date</th>
+                                                <th className="py-4 px-6 text-left text-sm font-bold text-[#1C3462] uppercase tracking-wider">Contacted</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-gray-100">
@@ -337,7 +333,7 @@ export default function Admin() {
                                                 >
                                                     <td className="py-4 px-6">
                                                         <div className="flex items-center">
-                                                            <div className="w-10 h-10 bg-[#1C3461] rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                                                            <div className="w-10 h-10 bg-[#1C3462] rounded-full flex items-center justify-center text-white font-semibold mr-3">
                                                                 {lead.name.charAt(0).toUpperCase()}
                                                             </div>
                                                             <span className="font-semibold text-gray-900">{lead.name}</span>
@@ -355,7 +351,7 @@ export default function Admin() {
                                                             {/* {lead.message} */}
                                                             <button
                                                                 onClick={() => setSelectedLead(lead)}
-                                                                className="px-4 py-2 bg-white text-[#1C3461] text-sm font-small rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-[#e6f8fc] cursor-pointer hover:scale-[1.01]"
+                                                                className="px-4 py-2 bg-white text-[#1C3462] text-sm font-small rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-[#e6f8fc] cursor-pointer hover:scale-[1.01]"
                                                             >
                                                                 View📝
                                                             </button>
