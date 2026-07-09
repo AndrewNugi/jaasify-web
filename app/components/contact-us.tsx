@@ -178,7 +178,7 @@ export default function ContactUs() {
               id="firstName"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-200/60 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:border-transparent transition-all"
             />
           </div>
           <div>
@@ -188,7 +188,7 @@ export default function ContactUs() {
               id="lastName"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-200/60 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:border-transparent transition-all"
             />
           </div>
         </div>
@@ -200,7 +200,7 @@ export default function ContactUs() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-200/60 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:border-transparent transition-all"
           />
         </div>
 
@@ -216,7 +216,7 @@ export default function ContactUs() {
               setCountry(countryObj?.name ?? "");
             }}
             id="countryCode"
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:border-transparent transition-all"
           >
             {countryCodes.map((country) => (
               <option
@@ -233,7 +233,7 @@ export default function ContactUs() {
             placeholder="+1 (555) 000-0000"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-200/60 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:border-transparent transition-all"
           />
         </div>
 
@@ -244,19 +244,19 @@ export default function ContactUs() {
             value={message}
             rows={4}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-purple-200/60 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent resize-none transition-all"
+            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:border-transparent resize-none transition-all"
           ></textarea>
         </div>
 
         <motion.button
           whileHover={{
             scale: 1.02,
-            boxShadow: "0 10px 25px -5px rgba(255, 255, 255, 0.3)",
+            boxShadow: "0 10px 25px -5px rgba(51, 192, 227, 0.3)",
             cursor: "pointer",
           }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          className="w-full bg-white text-purple-600 font-semibold py-3 px-6 rounded-lg hover:bg-purple-50 transition-all duration-300"
+          className="w-full bg-[#33c0e3] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#2ba9cc] transition-all duration-300"
         >
           Send message
         </motion.button>

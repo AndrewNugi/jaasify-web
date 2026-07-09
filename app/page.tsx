@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import hero from "../public/images/software-engineering.jpg";
 
 import logo from "../public/images/Jaasify.png";
@@ -82,13 +83,39 @@ export default function Home() {
     }
   };
 
+  const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
+  const industryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleIndustryMouseEnter = () => {
+    if (industryTimeoutRef.current) clearTimeout(industryTimeoutRef.current);
+    setIsIndustriesOpen(true);
+  };
+
+  const handleIndustryMouseLeave = () => {
+    industryTimeoutRef.current = setTimeout(() => {
+      setIsIndustriesOpen(false);
+    }, 250);
+  };
+
   // Updated navigation links with onClick handlers
   const navigationLinks = [
     { name: "Home", href: "#hero", id: "hero" },
     { name: "Services", href: "#services", id: "services" },
+    {
+      name: "Industries",
+      href: "/industries",
+      id: "industries",
+      dropdown: [
+        { name: "Banking", href: "/industries/banking" },
+        { name: "Insurance", href: "/industries/insurance" },
+        { name: "SACCOs", href: "/industries/saccos" },
+        { name: "TechCo", href: "/industries/techco" },
+        { name: "Hospitality", href: "/industries/hospitality" },
+        { name: "Utilities", href: "/industries/utilities" },
+      ],
+    },
     { name: "About", href: "#about", id: "about" },
     { name: "Why Us", href: "#why-choose-us", id: "why-choose-us" },
-    { name: "The Team", href: "#team-videos", id: "team-videos" },
     { name: "Contact", href: "#contact", id: "contact" },
   ];
 
@@ -183,19 +210,19 @@ export default function Home() {
           <div className="flex space-x-4">
             <a
               href="#"
-              className="hover:text-purple-300 transition-colors duration-200"
+              className="hover:text-white/70 transition-colors duration-200"
             >
               <FaFacebookF className="h-4 w-4 sm:h-5 sm:w-5" />
             </a>
             <a
               href="#"
-              className="hover:text-purple-300 transition-colors duration-200"
+              className="hover:text-white/70 transition-colors duration-200"
             >
               <FaTwitter className="h-4 w-4 sm:h-5 sm:w-5" />
             </a>
             <a
               href="#"
-              className="hover:text-purple-300 transition-colors duration-200"
+              className="hover:text-white/70 transition-colors duration-200"
             >
               <FaLinkedinIn className="h-4 w-4 sm:h-5 sm:w-5" />
             </a>
@@ -217,16 +244,60 @@ export default function Home() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex space-x-1">
-              {navigationLinks.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.id)}
-                  className="px-4 py-2 text-gray-700 hover:text-[#33c0e3] font-medium transition-colors duration-200 cursor-pointer"
-                >
-                  {item.name}
-                </button>
-              ))}
+            <div className="hidden md:flex space-x-1 items-center">
+              {navigationLinks.map((item) =>
+                item.dropdown ? (
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={handleIndustryMouseEnter}
+                    onMouseLeave={handleIndustryMouseLeave}
+                  >
+                    <button
+                      onClick={() => setIsIndustriesOpen(!isIndustriesOpen)}
+                      className="px-4 py-2 text-gray-700 hover:text-[#33c0e3] font-medium transition-colors duration-200 cursor-pointer flex items-center gap-1"
+                    >
+                      {item.name}
+                      <svg
+                        className={`w-3 h-3 transition-transform duration-200 ${
+                          isIndustriesOpen ? "rotate-180" : ""
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                    {isIndustriesOpen && (
+                      <div className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-100 rounded-lg shadow-lg z-50 py-2">
+                        {item.dropdown.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            href={sub.href}
+                            className="block px-4 py-2.5 text-sm text-gray-700 hover:text-[#33c0e3] hover:bg-gray-50 transition-colors duration-200"
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.id)}
+                    className="px-4 py-2 text-gray-700 hover:text-[#33c0e3] font-medium transition-colors duration-200 cursor-pointer"
+                  >
+                    {item.name}
+                  </button>
+                )
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -261,18 +332,38 @@ export default function Home() {
               style={{ willChange: "transform, opacity" }}
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {navigationLinks.map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => {
-                      scrollToSection(item.id);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-600 hover:bg-purple-50"
-                  >
-                    {item.name}
-                  </button>
-                ))}
+                {navigationLinks.map((item) =>
+                  item.dropdown ? (
+                    <div key={item.name}>
+                      <div className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700">
+                        {item.name}
+                      </div>
+                      <div className="pl-4 space-y-1">
+                        {item.dropdown.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            href={sub.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block w-full text-left px-3 py-1.5 rounded-md text-sm text-gray-600 hover:text-[#33c0e3] hover:bg-gray-50"
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      key={item.name}
+                      onClick={() => {
+                        scrollToSection(item.id);
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-[#33c0e3] hover:bg-gray-50"
+                    >
+                      {item.name}
+                    </button>
+                  )
+                )}
               </div>
             </motion.div>
           )}
@@ -282,15 +373,15 @@ export default function Home() {
       {/* Hero Section */}
       <header
         id="hero"
-        className="relative bg-gradient-to-br from-gray-50 to-purple-50 overflow-hidden min-h-[80vh] md:min-h-[90vh] flex items-center py-12 lg:py-0"
+        className="relative bg-gradient-to-br from-gray-50 to-white overflow-hidden min-h-[80vh] md:min-h-[90vh] flex items-center py-12 lg:py-0"
       >
         {/* Background Blobs (Enhanced) - Reduced on mobile */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-[5%] left-[5%] w-32 h-32 md:w-48 md:h-48 bg-purple-200 rounded-full opacity-15 blur-xl md:blur-3xl -z-10 animate-blob-slow"></div>
+            <div className="absolute top-[5%] left-[5%] w-32 h-32 md:w-48 md:h-48 bg-[#33c0e3]/20 rounded-full opacity-15 blur-xl md:blur-3xl -z-10 animate-blob-slow"></div>
             <div className="absolute bottom-[10%] right-[10%] w-40 h-40 md:w-64 md:h-64 bg-blue-100 rounded-full opacity-20 blur-xl md:blur-3xl -z-10 animate-blob"></div>
-            <div className="absolute top-[40%] left-[15%] w-24 h-24 md:w-32 md:h-32 bg-purple-100 rounded-full opacity-10 blur-lg md:blur-2xl -z-10 animate-pulse-slow"></div>
-            <div className="absolute top-[70%] left-[30%] w-40 h-40 md:w-56 md:h-56 bg-indigo-100 rounded-full opacity-15 blur-xl md:blur-3xl -z-10 animate-blob-delay"></div>
+            <div className="absolute top-[40%] left-[15%] w-24 h-24 md:w-32 md:h-32 bg-[#33c0e3]/10 rounded-full opacity-10 blur-lg md:blur-2xl -z-10 animate-pulse-slow"></div>
+            <div className="absolute top-[70%] left-[30%] w-40 h-40 md:w-56 md:h-56 bg-[#1C3461]/10 rounded-full opacity-15 blur-xl md:blur-3xl -z-10 animate-blob-delay"></div>
           </div>
         </div>
 
@@ -305,7 +396,7 @@ export default function Home() {
             >
               {/* Image Container with Mobile Optimizations */}
               <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl transform transition-transform duration-500 ease-in-out hover:scale-[1.01] hover:shadow-lg md:hover:shadow-3xl group w-full max-w-[500px] md:max-w-[800px]">
-                <div className="absolute inset-0 rounded-2xl md:rounded-3xl p-1 bg-gradient-to-br from-purple-400/30 to-blue-300/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-2xl md:rounded-3xl p-1 bg-gradient-to-br from-[#33c0e3]/30 to-blue-300/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
                 <Image
                   src={hero}
@@ -316,7 +407,7 @@ export default function Home() {
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-800/25 to-blue-700/35 mix-blend-multiply rounded-xl md:rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1C3461]/40 to-blue-700/35 mix-blend-multiply rounded-xl md:rounded-2xl"></div>
               </div>
 
               {/* Floating Card - Mobile Optimized */}
@@ -349,9 +440,9 @@ export default function Home() {
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-900 leading-snug md:leading-tight">
                 Transformative{" "}
-                <span className="bg-clip-text text-[#33c0e3] bg-gradient-to-r from-purple-600 to-indigo-700">
+                <span className="text-[#33c0e3]">
                   Digital Solutions
-                </span>{" "}
+                </span> {" "}
                 for Enterprise Growth
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-xl mx-auto lg:mx-0 mt-4 mb-6 md:mb-8 leading-relaxed">
@@ -367,7 +458,7 @@ export default function Home() {
   }}
   whileTap={{ scale: 0.97 }}
   onClick={() => scrollToSection('contact')}
-  className="bg-[#1C3461] cursor-pointer hover:from-purple-700 hover:to-indigo-700 text-white px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 text-sm sm:text-base"
+  className="bg-[#1C3461] cursor-pointer hover:bg-[#152b4d] text-white px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:ring-opacity-50 text-sm sm:text-base"
 >
   Get Started
 </motion.button>
@@ -380,7 +471,7 @@ export default function Home() {
   }}
   whileTap={{ scale: 0.97 }}
   onClick={() => scrollToSection('about')}
-  className="border cursor-pointer border-[#33c0e3] hover:border-[#33c0e3] text-[#33c0e3] hover:text-[#33c0e3] px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-opacity-50 text-sm sm:text-base"
+  className="border cursor-pointer border-[#33c0e3] hover:border-[#33c0e3] text-[#33c0e3] hover:text-white hover:bg-[#33c0e3] px-6 py-3 sm:px-8 sm:py-3.5 md:px-9 md:py-4 rounded-full md:rounded-full font-medium sm:font-semibold transition-all duration-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#33c0e3] focus:ring-opacity-50 text-sm sm:text-base"
 >
   Learn More
 </motion.button>
@@ -527,7 +618,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#33c0e3] rounded-full blur-3xl animate-pulse"></div>
           <div
-            className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse"
+            className="absolute bottom-20 right-10 w-96 h-96 bg-[#33c0e3] rounded-full blur-3xl animate-pulse"
             style={{ animationDelay: "1s" }}
           ></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#33c0e3]/20 rounded-full blur-3xl"></div>
@@ -994,9 +1085,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           {/* Header Section */}
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className="inline-block px-3 py-1 text-sm font-semibold text-[#33c0e3] bg-[#e6f8fc] rounded-full mb-4">
+            {/* <span className="inline-block px-3 py-1 text-sm font-semibold text-[#33c0e3] bg-[#e6f8fc] rounded-full mb-4">
               Meet the Experts
-            </span>
+            </span> */}
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Hear from the Minds Behind JaaSify
             </h2>
@@ -1085,7 +1176,7 @@ export default function Home() {
             className="relative z-10"
           >
             {/* Glowing card container */}
-            <div className="relative overflow-hidden rounded-3xl px-8 py-16 sm:p-16 shadow-2xl bg-gradient-to-br from-purple-900 to-indigo-800 border border-purple-500/30">
+            <div className="relative overflow-hidden rounded-3xl px-8 py-16 sm:p-16 shadow-2xl bg-gradient-to-br from-[#1a5f7a] to-[#0d2f3f] border border-[#33c0e3]/30">
               {/* Particle animation background */}
               <div className="absolute inset-0 opacity-10">
                 {[...Array(20)].map((_, i) => (
@@ -1100,10 +1191,8 @@ export default function Home() {
                       x: [
                         Math.random() * 100 + "%",
                         Math.random() * 100 + "%",
-                        Math.random() * 100 + "%",
                       ],
                       y: [
-                        Math.random() * 100 + "%",
                         Math.random() * 100 + "%",
                         Math.random() * 100 + "%",
                       ],
@@ -1117,9 +1206,6 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Glow effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-
               <div className="relative z-20 max-w-6xl mx-auto">
                 {/* Header Section - Centered */}
                 <div className="text-center mb-12">
@@ -1131,7 +1217,7 @@ export default function Home() {
                     className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
                   >
                     Contact{" "}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-pink-300">
+                    <span className="text-[#33c0e3]">
                       our team
                     </span>
                   </motion.h2>
@@ -1141,7 +1227,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
-                    className="text-lg text-purple-100 max-w-2xl mx-auto"
+                    className="text-lg text-white/70 max-w-2xl mx-auto"
                   >
                     Got any questions about the product or scaling on our
                     platform? We&apos;re here to help. Chat to our friendly team
@@ -1167,13 +1253,13 @@ export default function Home() {
                       <h3 className="text-xl font-semibold text-white mb-4">
                         Chat with us
                       </h3>
-                      <p className="text-purple-200 mb-6">
+                      <p className="text-white/60 mb-6">
                         Speak to our friendly team via live chat.
                       </p>
                       <div className="space-y-3">
                         <a
                           href="mailto:info@jaasify.com"
-                          className="flex items-center text-purple-300 hover:text-white transition-colors group"
+                          className="flex items-center text-[#33c0e3] hover:text-white transition-colors group"
                         >
                           <Send className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
                           <span className="underline">Shoot us an email</span>
@@ -1186,12 +1272,12 @@ export default function Home() {
                       <h3 className="text-xl font-semibold text-white mb-4">
                         Call us
                       </h3>
-                      <p className="text-purple-200 mb-4">
+                      <p className="text-white/60 mb-4">
                         Call our team Mon-Fri from 8am to 5pm.
                       </p>
                       <a
                         href="tel:+254713666622"
-                        className="flex items-center text-purple-300 hover:text-white transition-colors group"
+                        className="flex items-center text-[#33c0e3] hover:text-white transition-colors group"
                       >
                         <Phone className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" />
                         <span className="text-lg font-medium underline">
@@ -1205,12 +1291,12 @@ export default function Home() {
                       <h3 className="text-xl font-semibold text-white mb-4">
                         Visit us
                       </h3>
-                      <p className="text-purple-200 mb-4">
+                      <p className="text-white/60 mb-4">
                         Chat to us in person at our Nairobi HQ.
                       </p>
                       <a
                         href="#"
-                        className="flex items-start text-purple-300 hover:text-white transition-colors group"
+                        className="flex items-start text-[#33c0e3] hover:text-white transition-colors group"
                       >
                         <MapPin className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
                         <span className="underline">Nairobi, Kenya</span>

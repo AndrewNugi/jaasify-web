@@ -177,19 +177,19 @@ export default function Admin() {
                     <div className="flex space-x-4">
                         <a
                             href="#"
-                            className="hover:text-purple-300 transition-colors duration-200"
+                            className="hover:text-white/70 transition-colors duration-200"
                         >
                             <FaFacebookF className="h-4 w-4 sm:h-5 sm:w-5" />
                         </a>
                         <a
                             href="#"
-                            className="hover:text-purple-300 transition-colors duration-200"
+                            className="hover:text-white/70 transition-colors duration-200"
                         >
                             <FaTwitter className="h-4 w-4 sm:h-5 sm:w-5" />
                         </a>
                         <a
                             href="#"
-                            className="hover:text-purple-300 transition-colors duration-200"
+                            className="hover:text-white/70 transition-colors duration-200"
                         >
                             <FaLinkedinIn className="h-4 w-4 sm:h-5 sm:w-5" />
                         </a>
@@ -199,7 +199,7 @@ export default function Admin() {
 
             <div className="h-full bg-gradient-to-br from-gray-50 to-blue-50 overflow-auto">
                 {isLoading ? (
-                    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-pink-100 to-blue-100">
+                    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-[#1C3461]/5 to-blue-100">
                         <div className="flex space-x-2">
                             <span className="h-4 w-4 bg-[#33c0e3] rounded-full animate-bounce"></span>
                             <span className="h-4 w-4 bg-[#1C3461] rounded-full animate-bounce [animation-delay:-0.3s]"></span>
@@ -337,7 +337,7 @@ export default function Admin() {
                                                 >
                                                     <td className="py-4 px-6">
                                                         <div className="flex items-center">
-                                                            <div className="w-10 h-10 bg-[#1C3461] to-purple-500 rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                                                            <div className="w-10 h-10 bg-[#1C3461] rounded-full flex items-center justify-center text-white font-semibold mr-3">
                                                                 {lead.name.charAt(0).toUpperCase()}
                                                             </div>
                                                             <span className="font-semibold text-gray-900">{lead.name}</span>
@@ -355,7 +355,7 @@ export default function Admin() {
                                                             {/* {lead.message} */}
                                                             <button
                                                                 onClick={() => setSelectedLead(lead)}
-                                                                className="px-4 py-2 bg-white text-[#1C3461] text-sm font-small rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 cursor-pointer hover:scale-[1.01]"
+                                                                className="px-4 py-2 bg-white text-[#1C3461] text-sm font-small rounded-xl transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-[#e6f8fc] cursor-pointer hover:scale-[1.01]"
                                                             >
                                                                 View📝
                                                             </button>

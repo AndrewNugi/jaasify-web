@@ -53,12 +53,12 @@ export default function AdminLogin() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-indigo-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
             {/* Background decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute top-10 left-10 w-64 h-64 bg-purple-200 rounded-full opacity-10 blur-3xl animate-blob"></div>
+                <div className="absolute top-10 left-10 w-64 h-64 bg-[#33c0e3]/10 rounded-full opacity-10 blur-3xl animate-blob"></div>
                 <div className="absolute bottom-10 right-10 w-64 h-64 bg-blue-200 rounded-full opacity-10 blur-3xl animate-blob-delay"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-100 rounded-full opacity-5 blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#1C3461]/5 rounded-full opacity-5 blur-3xl"></div>
             </div>
 
             <motion.div
