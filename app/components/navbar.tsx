@@ -32,12 +32,17 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [topBarHidden, setTopBarHidden] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 10);
+      setTopBarHidden(y > 40);
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -59,7 +64,9 @@ export default function Navbar() {
     <>
       <header className="sticky top-0 z-50">
         {/* ─────── TOP CONTACT BAR ─────── */}
-        <div className="bg-[#1C3462] text-white/80 text-xs">
+        <div className={`bg-[#39BFE1] text-white/80 text-xs transition-all duration-300 ease-in-out overflow-hidden ${
+          topBarHidden ? "max-h-0 opacity-0 py-0" : "max-h-9"
+        }`}>
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="flex items-center justify-between h-9">
               <div className="flex items-center gap-4 sm:gap-6">
